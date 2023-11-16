@@ -5,6 +5,7 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\DonaturController;
+use App\Http\Controllers\MitraController;
 
 
 /*
@@ -66,3 +67,15 @@ Route::put('/donatur/{donatur}', [DonaturController::class, 'update'])->name('do
 // Rute untuk menghapus donatur
 Route::delete('/donatur/{donatur}', [DonaturController::class, 'destroy'])->name('donatur.destroy');
 
+//MITRA
+
+Route::get('/mitra', [MitraController::class, 'index'])->name('mitra.index');
+Route::get('/mitra/create', [MitraController::class, 'create'])->name('mitra.create');
+Route::post('/mitras', [MitraController::class, 'store'])->name('mitra.store');
+Route::get('/mitras/{mitra}', [MitraController::class, 'show'])->name('mitra.show');
+// Menampilkan formulir untuk mengedit Mitra
+Route::get('/mitras/{mitra}/edit', [MitraController::class, 'edit'])->name('mitra.edit');
+// Menyimpan perubahan setelah mengedit Mitra
+Route::put('/mitras/{mitra}', [MitraController::class, 'update'])->name('mitra.update');
+// Menghapus Mitra
+Route::delete('/mitras/{mitra}', [MitraController::class, 'destroy'])->name('mitra.destroy');
