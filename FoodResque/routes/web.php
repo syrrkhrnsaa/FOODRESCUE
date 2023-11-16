@@ -4,6 +4,8 @@ use App\Http\Controllers\AkunController;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\HomeController;
+use App\Http\Controllers\DonaturController;
+
 
 /*
 |--------------------------------------------------------------------------
@@ -41,3 +43,26 @@ Route::group(['prefix' => 'dashboard/admin'], function () {
             Route::delete('{id}/hapus', 'hapusAkun')->name('delete');
         });
 });
+
+// Rute untuk menampilkan daftar donatur
+Route::get('/donatur', [DonaturController::class, 'index'])->name('donatur.index');
+
+// Rute untuk menampilkan formulir tambah donatur
+Route::get('/donatur/create', [DonaturController::class, 'create'])->name('donatur.create');
+
+// Rute untuk menyimpan donatur yang baru ditambahkan
+Route::post('/donatur', [DonaturController::class, 'store'])->name('donatur.store');
+
+// Rute untuk menampilkan detail donatur
+Route::get('/donatur/{donatur}', [DonaturController::class, 'show'])->name('donatur.show');
+
+// Rute untuk menampilkan formulir edit donatur
+Route::get('/donatur/{donatur}/edit', [DonaturController::class, 'edit'])->name('donatur.edit');
+
+
+// Rute untuk menyimpan perubahan pada donatur yang diubah
+Route::put('/donatur/{donatur}', [DonaturController::class, 'update'])->name('donatur.update');
+
+// Rute untuk menghapus donatur
+Route::delete('/donatur/{donatur}', [DonaturController::class, 'destroy'])->name('donatur.destroy');
+

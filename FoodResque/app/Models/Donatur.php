@@ -8,14 +8,15 @@ use Illuminate\Database\Eloquent\Model;
 class Donatur extends Model
 {
     use HasFactory;
-    protected $table = 'donatur_table';
+
+    protected $table = 'donatur';
+
     protected $fillable = [
-        'donatur_id',
-            'username',
-            'nama_donatur',
-            'alamat',
-            'no_telp'
+        'username',
+        'nama_donatur',
+        'alamat',
+        'no_telp'
     ];
+
     public $timestamps = true;
-    
 }

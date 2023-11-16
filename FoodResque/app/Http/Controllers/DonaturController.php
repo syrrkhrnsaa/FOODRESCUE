@@ -3,82 +3,63 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Models\Donatur;
 
 class DonaturController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
     public function index()
     {
-        //
+        $donatur = Donatur::all();
+        return view('donatur.index', compact('donatur'));
     }
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
     public function create()
     {
-        //
+        return view('donatur.create');
     }
 
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
     public function store(Request $request)
     {
-        //
+        $request->validate([
+            'username' => 'required|string',
+            'nama_donatur' => 'required|string',
+            'alamat' => 'required|string',
+            'no_telp' => 'required|string',
+        ]);
+
+        Donatur::create($request->all());
+
+        return redirect()->route('donatur.index')->with('success', 'Donatur berhasil ditambahkan.');
     }
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function show($id)
+    public function show(Donatur $donatur)
     {
-        //
+        return view('donatur.show', compact('donatur'));
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function edit($id)
+    public function edit(Donatur $donatur)
     {
-        //
+        return view('donatur.edit', compact('donatur'));
     }
 
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function update(Request $request, $id)
+    public function update(Request $request, Donatur $donatur)
     {
-        //
+        $request->validate([
+            'username' => 'required|string',
+            'nama_donatur' => 'required|string',
+            'alamat' => 'required|string',
+            'no_telp' => 'required|string',
+        ]);
+
+        $donatur->update($request->all());
+
+        return redirect()->route('donatur.index')->with('success', 'Donatur berhasil diperbarui.');
     }
 
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function destroy($id)
+    public function destroy(Donatur $donatur)
     {
-        //
+        $donatur->delete();
+
+        return redirect()->route('donatur.index')->with('success', 'Donatur berhasil dihapus.');
     }
 }

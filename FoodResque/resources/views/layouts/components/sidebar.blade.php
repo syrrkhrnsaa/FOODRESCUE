@@ -20,6 +20,11 @@ $links = [
                 "section_text" => "Tambah Akun",
                 "section_icon" => "far fa-circle",
                 "section_href" => route('akun.add')
+            ],
+            [
+                "section_text" => "Donatur",
+                "section_icon" => "far fa-circle",
+                "section_href" => route('donatur.index')
             ]
         ]
     ]
