@@ -1,13 +1,13 @@
 <!-- resources/views/mitra/index.blade.php -->
-
-@extends('layouts.app')
+@extends('layouts.base_admin.base_dashboard')
 
 @section('content')
     <div class="container">
         <div class="row">
             <div class="col-md-12">
-                <h1>List of Mitra</h1>
+                <h1>Daftar Mitra</h1>
                 <a href="{{ route('mitra.create') }}" class="btn btn-primary mb-3">Add New Mitra</a>
+                
                 <table class="table">
                     <thead>
                         <tr>
