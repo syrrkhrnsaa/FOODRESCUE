@@ -68,14 +68,10 @@ Route::put('/donatur/{donatur}', [DonaturController::class, 'update'])->name('do
 Route::delete('/donatur/{donatur}', [DonaturController::class, 'destroy'])->name('donatur.destroy');
 
 //MITRA
-
 Route::get('/mitra', [MitraController::class, 'index'])->name('mitra.index');
 Route::get('/mitra/create', [MitraController::class, 'create'])->name('mitra.create');
-Route::post('/mitras', [MitraController::class, 'store'])->name('mitra.store');
-Route::get('/mitras/{mitra}', [MitraController::class, 'show'])->name('mitra.show');
-// Menampilkan formulir untuk mengedit Mitra
-Route::get('/mitras/{mitra}/edit', [MitraController::class, 'edit'])->name('mitra.edit');
-// Menyimpan perubahan setelah mengedit Mitra
-Route::put('/mitras/{mitra}', [MitraController::class, 'update'])->name('mitra.update');
-// Menghapus Mitra
-Route::delete('/mitras/{mitra}', [MitraController::class, 'destroy'])->name('mitra.destroy');
+Route::post('/mitra', [MitraController::class, 'store'])->name('mitra.store');
+Route::get('/mitra/{mitra}', [MitraController::class, 'show'])->name('mitra.show');
+Route::get('/mitra/{mitra}/edit', [MitraController::class, 'edit'])->name('mitra.edit');
+Route::put('/mitra/{mitra}', [MitraController::class, 'update'])->name('mitra.update');
+Route::delete('/mitra/{mitra}', [MitraController::class, 'destroy'])->name('mitra.destroy');
