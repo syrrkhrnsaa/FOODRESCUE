@@ -1,6 +1,6 @@
 <!-- resources/views/mitra/edit.blade.php -->
-
-@extends('layouts.app')
+@extends('layouts.base_admin.base_dashboard')
+<title>@yield('judul') Edit Mitra</title>
 
 @section('content')
     <div class="container">

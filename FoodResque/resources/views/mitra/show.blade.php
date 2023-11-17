@@ -1,6 +1,6 @@
 <!-- resources/views/mitra/show.blade.php -->
-
-@extends('layouts.app')
+@extends('layouts.base_admin.base_dashboard')
+<title>@yield('judul') View Mitra</title>
 
 @section('content')
     <div class="container">
@@ -9,7 +9,7 @@
                 <h1>Mitra Details</h1>
                 <div class="card">
                     <div class="card-body">
-                        <h5 class="card-title">Mitra ID: {{ $mitra->mitra_id }}</h5>
+                        <p class="card-text"><strong>Mitra ID:</strong> {{ $mitra->mitra_id }}</p>
                         <p class="card-text"><strong>Username:</strong> {{ $mitra->username }}</p>
                         <p class="card-text"><strong>Nama Mitra:</strong> {{ $mitra->nama_mitra }}</p>
                         <p class="card-text"><strong>Alamat:</strong> {{ $mitra->alamat }}</p>
