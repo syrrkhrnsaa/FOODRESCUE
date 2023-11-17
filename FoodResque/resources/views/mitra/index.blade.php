@@ -1,5 +1,6 @@
 <!-- resources/views/mitra/index.blade.php -->
 @extends('layouts.base_admin.base_dashboard')
+<title>@yield('judul') Daftar Mitra</title>
 
 @section('content')
     <div class="container">
