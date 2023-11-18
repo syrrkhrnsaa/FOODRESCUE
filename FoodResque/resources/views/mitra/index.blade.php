@@ -1,4 +1,3 @@
-<!-- resources/views/mitra/index.blade.php -->
 @extends('layouts.base_admin.base_dashboard')
 <title>@yield('judul') Daftar Mitra</title>
 
@@ -9,7 +8,7 @@
                 <h1>Daftar Mitra</h1>
                 <a href="{{ route('mitra.create') }}" class="btn btn-primary mb-3">Add New Mitra</a>
                 
-                <table class="table">
+                <table class="table" id="mitra-table">
                     <thead>
                         <tr>
                             <th>ID</th>
@@ -21,27 +20,29 @@
                         </tr>
                     </thead>
                     <tbody>
-                        @foreach($mitra as $mitraItem)
-                            <tr>
-                                <td>{{ $mitraItem->mitra_id }}</td>
-                                <td>{{ $mitraItem->username }}</td>
-                                <td>{{ $mitraItem->nama_mitra }}</td>
-                                <td>{{ $mitraItem->alamat }}</td>
-                                <td>{{ $mitraItem->no_telp }}</td>
-                                <td>
-                                    <a href="{{ route('mitra.show', $mitraItem->mitra_id) }}" class="btn btn-info">View</a>
-                                    <a href="{{ route('mitra.edit', $mitraItem->mitra_id) }}" class="btn btn-primary">Edit</a>
-                                    <form action="{{ route('mitra.destroy', $mitraItem->mitra_id) }}" method="POST" style="display: inline-block;">
-                                        @csrf
-                                        @method('DELETE')
-                                        <button type="submit" class="btn btn-danger" onclick="return confirm('Are you sure you want to delete this item?')">Delete</button>
-                                    </form>
-                                </td>
-                            </tr>
-                        @endforeach
                     </tbody>
                 </table>
             </div>
         </div>
     </div>
+
+    @push('scripts')
+    <script>
+        $(function() {
+            $('#mitra-table').DataTable({
+                processing: true,
+                serverSide: true,
+                ajax: '{{ route('mitra.index') }}',
+                columns: [
+                    { data: 'mitra_id', name: 'mitra_id' },
+                    { data: 'username', name: 'username' },
+                    { data: 'nama_mitra', name: 'nama_mitra' },
+                    { data: 'alamat', name: 'alamat' },
+                    { data: 'no_telp', name: 'no_telp' },
+                    { data: 'action', name: 'action', orderable: false, searchable: false }
+                ]
+            });
+        });
+    </script>
+    @endpush
 @endsection
