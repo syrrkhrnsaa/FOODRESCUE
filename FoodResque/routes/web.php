@@ -71,6 +71,8 @@ Route::delete('/donatur/{donatur}', [DonaturController::class, 'destroy'])->name
 
 //MITRA
 Route::get('/mitra', [MitraController::class, 'index'])->name('mitra.index');
+Route::get('/mitra/data', [MitraController::class, 'mitraData'])->name('mitra.data');
+
 Route::get('/mitra/create', [MitraController::class, 'create'])->name('mitra.create');
 Route::post('/mitra', [MitraController::class, 'store'])->name('mitra.store');
 Route::get('/mitra/{mitra}', [MitraController::class, 'show'])->name('mitra.show');

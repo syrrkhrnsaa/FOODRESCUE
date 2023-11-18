@@ -1,5 +1,6 @@
+<!-- resources/views/mitra/index.blade.php -->
 @extends('layouts.base_admin.base_dashboard')
-@section('judul', 'Daftar Mitra')
+<title>@yield('judul') Daftar Mitra</title>
 
 @section('content')
     <div class="container">
@@ -19,8 +20,6 @@
                             <th>Actions</th>
                         </tr>
                     </thead>
-                    <tbody>
-                    </tbody>
                 </table>
             </div>
         </div>
@@ -28,26 +27,21 @@
 @endsection
 
 @push('scripts')
-    <!-- Pastikan Anda telah memuat jQuery dan DataTables sebelum script berikut -->
-    <script>
-        console.log("URL Mitra Index:", "{{ route('mitra.index') }}");
-        $(document).ready(function() {
-            $('#mitra-table').DataTable({
-                processing: true,
-                serverSide: true,
-                ajax: '{{ route('mitra.index') }}',
-                columns: [
-                    { data: 'id', name: 'id' },
-                    { data: 'username', name: 'username' },
-                    { data: 'nama_mitra', name: 'nama_mitra' },
-                    { data: 'alamat', name: 'alamat' },
-                    { data: 'no_telp', name: 'no_telp' },
-                    { data: 'action', name: 'action', orderable: false, searchable: false }
-                ],
-                "fnRowCallback": function( nRow, aData, iDisplayIndex, iDisplayIndexFull ) {
-                    $('td:eq(0)', nRow).html('<a href="' + aData.id + '"> ' + aData.id + '</a>');
-                }
-            });
+<script>
+    $(document).ready(function() {
+        $('#mitra-table').DataTable({
+            processing: true,
+            serverSide: true,
+            ajax: '{{ route('mitra.data') }}',
+            columns: [
+                { data: 'mitra_id', name: 'mitra_id' },
+                { data: 'username', name: 'username' },
+                { data: 'nama_mitra', name: 'nama_mitra' },
+                { data: 'alamat', name: 'alamat' },
+                { data: 'no_telp', name: 'no_telp' },
+                { data: 'action', name: 'action', orderable: false, searchable: false },
+            ]
         });
-    </script>
+    });
+</script>
 @endpush
