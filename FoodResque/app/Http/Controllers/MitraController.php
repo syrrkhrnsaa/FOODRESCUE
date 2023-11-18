@@ -14,25 +14,21 @@ class MitraController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
-        if (request()->ajax()) {
+        if ($request->ajax()) {
             $data = Mitra::latest()->get();
             return DataTables::of($data)
-                ->addColumn('action', function($row){
-                    $btn = '<a href="'.route('mitra.show', $row->mitra_id).'" class="btn btn-info">View</a> <a href="'.route('mitra.edit', $row->mitra_id).'" class="btn btn-primary">Edit</a>';
-                    $btn .= ' <form action="'.route('mitra.destroy', $row->mitra_id).'" method="POST" style="display: inline-block;">
-                                ' . csrf_field() . '
-                                ' . method_field('DELETE') . '
-                                <button type="submit" class="btn btn-danger" onclick="return confirm(\'Apakah Anda yakin ingin menghapus item ini?\')">Delete</button>
-                                </form>';
+                ->addColumn('action', function ($row) {
+                    $btn = '<a href="mitra/' . $row->id . '/edit" class="edit btn btn-primary btn-sm">Edit</a>';
+                    $btn .= '&nbsp;<button type="button" data-id="' . $row->id . '" class="delete btn btn-danger btn-sm">Delete</button>';
                     return $btn;
                 })
                 ->rawColumns(['action'])
                 ->make(true);
         }
+
         return view('mitra.index');
-        
     }
 
     /**

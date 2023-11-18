@@ -8,8 +8,9 @@ use Illuminate\Database\Eloquent\Model;
 class Mitra extends Model
 {
     use HasFactory;
+
     protected $table = 'mitra';
-    protected $primaryKey = 'mitra_id';
+    protected $primaryKey = 'id'; // Sesuaikan dengan nama primary key Anda
     protected $fillable = [
         'username',
         'nama_mitra',

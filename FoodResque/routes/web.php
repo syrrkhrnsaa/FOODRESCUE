@@ -47,6 +47,8 @@ Route::group(['prefix' => 'dashboard/admin'], function () {
 
 // Rute untuk menampilkan daftar donatur
 Route::get('/donatur', [DonaturController::class, 'index'])->name('donatur.index');
+Route::get('/donatur/data', [DonaturController::class, 'donaturData'])->name('donatur.data');
+
 
 // Rute untuk menampilkan formulir tambah donatur
 Route::get('/donatur/create', [DonaturController::class, 'create'])->name('donatur.create');

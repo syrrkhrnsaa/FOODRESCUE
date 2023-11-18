@@ -14,6 +14,16 @@
         <!-- Theme style -->
         <link rel="stylesheet" href="{{ asset('vendor/adminlte3/css/adminlte.min.css') }}">
         @yield('script_head')
+        <title>Admin Dashboard</title>
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <!-- DataTables CSS -->
+    <link rel="stylesheet" href="https://cdn.datatables.net/1.11.5/css/jquery.dataTables.min.css">
+    <!-- Your additional CSS files -->
+    <!-- ... -->
+
+    <!-- Your additional head scripts -->
+    <!-- ... -->
     </head>
     <body class="hold-transition sidebar-mini">
         <!-- Site wrapper -->
@@ -40,6 +50,14 @@
         <script src="{{ asset('vendor/adminlte3/js/adminlte.min.js') }}"></script>
         <!-- AdminLTE for demo purposes -->
         {{-- <script src="../../dist/js/demo.js"></script> --}}
+        <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <!-- DataTables JS -->
+    <script src="https://cdn.datatables.net/1.11.5/js/jquery.dataTables.min.js"></script>
+    <!-- Bootstrap JS -->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    
+    <!-- Additional scripts -->
+    @stack('scripts')
 
         @yield('script_footer')
     </body>

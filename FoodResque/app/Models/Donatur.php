@@ -9,7 +9,7 @@ class Donatur extends Model
 {
     use HasFactory;
 
-    protected $table = 'donatur';
+    protected $table = 'donatur'; // Sesuaikan dengan nama tabel yang digunakan di database
 
     protected $fillable = [
         'username',
@@ -18,5 +18,5 @@ class Donatur extends Model
         'no_telp'
     ];
 
-    public $timestamps = true;
+    public $timestamps = true; // Sesuaikan dengan kebutuhan Anda
 }
