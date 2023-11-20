@@ -9,13 +9,13 @@
                 <h1>Mitra Details</h1>
                 <div class="card">
                     <div class="card-body">
-                        <p class="card-text"><strong>Mitra ID:</strong> {{ $mitra->mitra_id }}</p>
+                        <p class="card-text"><strong>Mitra ID:</strong> {{ $mitra->id }}</p>
                         <p class="card-text"><strong>Username:</strong> {{ $mitra->username }}</p>
                         <p class="card-text"><strong>Nama Mitra:</strong> {{ $mitra->nama_mitra }}</p>
                         <p class="card-text"><strong>Alamat:</strong> {{ $mitra->alamat }}</p>
                         <p class="card-text"><strong>No. Telp:</strong> {{ $mitra->no_telp }}</p>
-                        <a href="{{ route('mitra.edit', $mitra->mitra_id) }}" class="btn btn-primary">Edit</a>
-                        <form action="{{ route('mitra.destroy', $mitra->mitra_id) }}" method="POST" style="display: inline-block;">
+                        <a href="{{ route('mitra.edit', $mitra->id) }}" class="btn btn-primary">Edit</a>
+                        <form action="{{ route('mitra.destroy', $mitra->id) }}" method="POST" style="display: inline-block;">
                             @csrf
                             @method('DELETE')
                             <button type="submit" class="btn btn-danger" onclick="return confirm('Are you sure you want to delete this item?')">Delete</button>

@@ -7,7 +7,7 @@
         <div class="row">
             <div class="col-md-12">
                 <h1>Edit Mitra</h1>
-                <form action="{{ route('mitra.update', $mitra->mitra_id) }}" method="POST">
+                <form action="{{ route('mitra.update', $mitra->id) }}" method="POST">
                     @csrf
                     @method('PUT')
                     <div class="form-group">
