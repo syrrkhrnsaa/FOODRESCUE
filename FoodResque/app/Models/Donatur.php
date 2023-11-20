@@ -4,6 +4,8 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
+use Illuminate\Database\Eloquent\Relations\HasMany;
 
 class Donatur extends Model
 {
@@ -19,4 +21,10 @@ class Donatur extends Model
     ];
 
     public $timestamps = true; // Sesuaikan dengan kebutuhan Anda
+
+    public function Have():HasMany
+    {
+        //foreign ke local
+        return $this->hasMany(Makanan::class, 'donatur_id','id');
+    }
 }
