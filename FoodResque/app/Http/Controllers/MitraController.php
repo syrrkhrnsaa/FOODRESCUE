@@ -20,12 +20,12 @@ class MitraController extends Controller
 
     public function mitraData()
     {
-        $mitra = Mitra::select(['mitra_id','username', 'nama_mitra', 'alamat', 'no_telp']);
+        $mitra = Mitra::select(['id','username', 'nama_mitra', 'alamat', 'no_telp']);
             return DataTables::of($mitra)
                 ->addColumn('action', function ($mitra) {
-                    $btn = '<a href="' . route('mitra.show', $mitra->mitra_id) . '" class="btn btn-info">View</a>';
-                    $btn .= ' <a href="' . route('mitra.edit', $mitra->mitra_id) . '" class="btn btn-primary">Edit</a>';
-                    $btn .= ' <form action="' . route('mitra.destroy', $mitra->mitra_id) . '" method="POST" style="display: inline-block;">';
+                    $btn = '<a href="' . route('mitra.show', $mitra->id) . '" class="btn btn-info">View</a>';
+                    $btn .= ' <a href="' . route('mitra.edit', $mitra->id) . '" class="btn btn-primary">Edit</a>';
+                    $btn .= ' <form action="' . route('mitra.destroy', $mitra->id) . '" method="POST" style="display: inline-block;">';
                     $btn .=  csrf_field();
                     $btn .=  method_field('DELETE');
                     $btn .= ' <button type="submit" class="btn btn-danger" onclick="return confirm(\'Are you sure you want to delete this item?\')">Delete</button>';
