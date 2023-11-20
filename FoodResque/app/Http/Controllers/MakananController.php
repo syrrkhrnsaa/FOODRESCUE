@@ -40,7 +40,7 @@ class MakananController extends Controller
             'nama_Menu' => 'required|string',
             'jumlah_Makanan' => 'required|integer',
             'tanggal_Expired' => 'required|date',
-            'waktu' => 'required|time',
+            'waktu' => 'required|date_format:H:i', // Format H:i untuk waktu (jam:menit)
             'status' => 'required|string',
             'donatur_id' => 'required|exists:donatur,id',
             'mitra_id' => 'required|exists:mitra,id',
