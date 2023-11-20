@@ -14,12 +14,17 @@ return new class extends Migration
     public function up()
     {
         Schema::create('makanan', function (Blueprint $table) {
-            $table->id('makanan_id');
+            $table->id();
             $table->string('nama_Menu');
             $table->integer('jumlah_Makanan');
             $table->date('tanggal_Expired');
             $table->time('waktu');
             $table->string('status');
+            $table->unsignedBigInteger('donatur_id');
+            $table->foreign('donatur_id')->references('id')->on('donatur');
+            $table->unsignedInteger('mitra_id');
+            $table->foreign('mitra_id')->references('id')->on('mitra');
+            $table->timestamps();
         });
     }
 

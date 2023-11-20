@@ -4,18 +4,31 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
 
 class Makanan extends Model
 {
     use HasFactory;
 
     protected $table = 'makanan';
-    protected $primarykey = 'makanan_id';
-    protected $fillabe = [
+    protected $primaryKey = 'id';
+    protected $fillable = [
         'nama_Menu',
         'jumlah_Makanan',
         'tanggal_Expired',
         'waktu',
         'status',
+        'donatur_id',
+        'mitra_id'
     ];
+
+    public function donatur():BelongsTo
+    {
+        return $this->belongsTo(Donatur::class, 'donatur_id', 'id');
+    }
+
+    public function mitra():BelongsTo
+    {
+        return $this->belongsTo(Mitra::class, 'mitra_id', 'id');
+    }
 }
