@@ -1,3 +1,4 @@
+<!-- resources/views/mitra/index.blade.php -->
 @extends('layouts.base_admin.base_dashboard')
 <title>@yield('judul') Daftar Mitra</title>
 
@@ -19,8 +20,6 @@
                             <th>Actions</th>
                         </tr>
                     </thead>
-                    <tbody>
-                    </tbody>
                 </table>
             </div>
         </div>
@@ -50,3 +49,23 @@
         </script>
     @endpush
 @endsection
+
+@push('scripts')
+<script>
+    $(document).ready(function() {
+        $('#mitra-table').DataTable({
+            processing: true,
+            serverSide: true,
+            ajax: '{{ route('mitra.data') }}',
+            columns: [
+                { data: 'mitra_id', name: 'mitra_id' },
+                { data: 'username', name: 'username' },
+                { data: 'nama_mitra', name: 'nama_mitra' },
+                { data: 'alamat', name: 'alamat' },
+                { data: 'no_telp', name: 'no_telp' },
+                { data: 'action', name: 'action', orderable: false, searchable: false },
+            ]
+        });
+    });
+</script>
+@endpush

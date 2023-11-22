@@ -6,6 +6,8 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\DonaturController;
 use App\Http\Controllers\MitraController;
+use App\Http\Controllers\MakananController;
+use App\Http\Controllers\UlasanController;
 
 /*
 |--------------------------------------------------------------------------
@@ -46,6 +48,8 @@ Route::group(['prefix' => 'dashboard/admin'], function () {
 
 // Rute untuk menampilkan daftar donatur
 Route::get('/donatur', [DonaturController::class, 'index'])->name('donatur.index');
+Route::get('/donatur/data', [DonaturController::class, 'donaturData'])->name('donatur.data');
+
 
 // Rute untuk menampilkan formulir tambah donatur
 Route::get('/donatur/create', [DonaturController::class, 'create'])->name('donatur.create');
@@ -68,9 +72,37 @@ Route::delete('/donatur/{donatur}', [DonaturController::class, 'destroy'])->name
 
 //MITRA
 Route::get('/mitra', [MitraController::class, 'index'])->name('mitra.index');
+Route::get('/mitra/data', [MitraController::class, 'mitraData'])->name('mitra.data');
+
 Route::get('/mitra/create', [MitraController::class, 'create'])->name('mitra.create');
 Route::post('/mitra', [MitraController::class, 'store'])->name('mitra.store');
 Route::get('/mitra/{mitra}', [MitraController::class, 'show'])->name('mitra.show');
 Route::get('/mitra/{mitra}/edit', [MitraController::class, 'edit'])->name('mitra.edit');
 Route::put('/mitra/{mitra}', [MitraController::class, 'update'])->name('mitra.update');
 Route::delete('/mitra/{mitra}', [MitraController::class, 'destroy'])->name('mitra.destroy');
+
+
+Route::get('makanan', [MakananController::class, 'index'])->name('makanan.index');
+Route::resource('makanan', MakananController::class);
+Route::get('makanan/getData', [MakananController::class, 'getData'])->name('makanan.getData');
+Route::get('makanan/create', [MakananController::class, 'create'])->name('makanan.create');
+Route::post('makanan/store', [MakananController::class, 'store'])->name('makanan.store');
+Route::get('makanan/{id}', [MakananController::class, 'show'])->name('makanan.show');
+Route::get('makanan/{id}/edit', [MakananController::class, 'edit'])->name('makanan.edit');
+Route::put('makanan/{id}', [MakananController::class, 'update'])->name('makanan.update');
+Route::delete('makanan/{id}', [MakananController::class, 'destroy'])->name('makanan.destroy');
+
+//ULASAN
+
+Route::get('/ulasan', [UlasanController::class, 'index'])->name('ulasan.index');
+Route::get('/ulasan/data', [UlasanController::class, 'getData'])->name('ulasan.data');
+
+Route::get('/ulasan/create', [UlasanController::class, 'create'])->name('ulasan.create');
+Route::post('/ulasan', [UlasanController::class, 'store'])->name('ulasan.store');
+Route::get('/ulasan/{ulasan}', [UlasanController::class, 'show'])->name('ulasan.show');
+Route::get('/ulasan/{ulasan}/edit', [UlasanController::class, 'edit'])->name('ulasan.edit');
+Route::put('/ulasan/{ulasan}', [UlasanController::class, 'update'])->name('ulasan.update');
+Route::delete('/ulasan/{ulasan}', [UlasanController::class, 'destroy'])->name('ulasan.destroy');
+
+
+
