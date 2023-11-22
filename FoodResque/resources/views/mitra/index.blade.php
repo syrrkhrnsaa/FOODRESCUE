@@ -58,7 +58,7 @@
             serverSide: true,
             ajax: '{{ route('mitra.data') }}',
             columns: [
-                { data: 'mitra_id', name: 'mitra_id' },
+                { data: 'id', name: 'id' },
                 { data: 'username', name: 'username' },
                 { data: 'nama_mitra', name: 'nama_mitra' },
                 { data: 'alamat', name: 'alamat' },

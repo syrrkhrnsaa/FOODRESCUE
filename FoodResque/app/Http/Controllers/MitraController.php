@@ -31,6 +31,7 @@ class MitraController extends Controller
 
     public function mitraData()
     {
+<<<<<<< HEAD
         $mitra = Mitra::select(['mitra_id', 'username', 'nama_mitra', 'alamat', 'no_telp']);
         return DataTables::of($mitra)
             ->addColumn('action', function ($mitra) {
@@ -45,6 +46,22 @@ class MitraController extends Controller
             })
             ->rawColumns(['action'])
             ->make(true);
+=======
+        $mitra = Mitra::select(['id','username', 'nama_mitra', 'alamat', 'no_telp']);
+            return DataTables::of($mitra)
+                ->addColumn('action', function ($mitra) {
+                    $btn = '<a href="' . route('mitra.show', $mitra->id) . '" class="btn btn-info">View</a>';
+                    $btn .= ' <a href="' . route('mitra.edit', $mitra->id) . '" class="btn btn-primary">Edit</a>';
+                    $btn .= ' <form action="' . route('mitra.destroy', $mitra->id) . '" method="POST" style="display: inline-block;">';
+                    $btn .=  csrf_field();
+                    $btn .=  method_field('DELETE');
+                    $btn .= ' <button type="submit" class="btn btn-danger" onclick="return confirm(\'Are you sure you want to delete this item?\')">Delete</button>';
+                    $btn .= ' </form>';
+                    return $btn;
+                })
+                ->rawColumns(['action'])
+                ->make(true);
+>>>>>>> 4abd620cabcdc1c6ab2560a8ab23729739f8b722
     }
 
     public function create()
