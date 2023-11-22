@@ -4,7 +4,8 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Mitra;
-use DataTables;
+//use DataTables;
+use Yajra\DataTables\DataTables;
 //use Yajra\DataTables\Facades\DataTables;
 
 class MitraController extends Controller
@@ -15,25 +16,25 @@ class MitraController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function index()
-    {
-        if (request()->ajax()) {
-            $data = Mitra::latest()->get();
-            return DataTables::of($data)
-                ->addColumn('action', function($row){
-                    $btn = '<a href="'.route('mitra.show', $row->mitra_id).'" class="btn btn-info">View</a> <a href="'.route('mitra.edit', $row->mitra_id).'" class="btn btn-primary">Edit</a>';
-                    $btn .= ' <form action="'.route('mitra.destroy', $row->mitra_id).'" method="POST" style="display: inline-block;">
-                                ' . csrf_field() . '
-                                ' . method_field('DELETE') . '
-                                <button type="submit" class="btn btn-danger" onclick="return confirm(\'Apakah Anda yakin ingin menghapus item ini?\')">Delete</button>
-                                </form>';
-                    return $btn;
-                })
-                ->rawColumns(['action'])
-                ->make(true);
-        }
-        return view('mitra.index');
-        
+{
+    if (request()->ajax()) {
+        $data = Mitra::latest()->get();
+        return DataTables::of($data)
+            ->addColumn('action', function ($row) {
+                $btn = '<a href="' . route('mitra.show', $row->mitra_id) . '" class="btn btn-info">View</a> <a href="' . route('mitra.edit', $row->mitra_id) . '" class="btn btn-primary">Edit</a>';
+                $btn .= ' <form action="' . route('mitra.destroy', $row->mitra_id) . '" method="POST" style="display: inline-block;">
+                            ' . csrf_field() . '
+                            ' . method_field('DELETE') . '
+                            <button type="submit" class="btn btn-danger" onclick="return confirm(\'Apakah Anda yakin ingin menghapus item ini?\')">Delete</button>
+                            </form>';
+                return $btn;
+            })
+            ->rawColumns(['action'])
+            ->make(true);
     }
+
+    return view('mitra.index');
+}
 
     /**
      * Show the form for creating a new resource.

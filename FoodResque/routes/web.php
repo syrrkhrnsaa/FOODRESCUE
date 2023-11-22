@@ -7,7 +7,6 @@ use App\Http\Controllers\HomeController;
 use App\Http\Controllers\DonaturController;
 use App\Http\Controllers\MitraController;
 
-
 /*
 |--------------------------------------------------------------------------
 | Web Routes
