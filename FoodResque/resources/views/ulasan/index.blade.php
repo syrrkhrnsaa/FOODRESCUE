@@ -1,7 +1,6 @@
 <!-- resources/views/ulasan/index.blade.php -->
 
-@extends('layouts.app') <!-- Jika menggunakan layout -->
-
+@extends('layouts.base_admin.base_dashboard')
 @section('content')
     <div class="container">
         <h1>Daftar Ulasan</h1>
