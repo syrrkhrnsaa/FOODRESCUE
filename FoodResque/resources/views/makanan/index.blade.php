@@ -1,5 +1,4 @@
 @extends('layouts.base_admin.base_dashboard')
-
 @section('content')
     <div class="container">
         <h2>Data Makanan</h2>
@@ -7,7 +6,7 @@
         <table class="table" id="makanan-table">
             <thead>
                 <tr>
-                    <th>ID</th>
+                    <th>No</th>
                     <th>Nama Menu</th>
                     <th>Jumlah Makanan</th>
                     <th>Tanggal Expired</th>
@@ -21,24 +20,26 @@
         </table>
     </div>
 
-    <script>
-        $(document).ready(function() {
-            $('#makanan-table').DataTable({
-                processing: true,
-                serverSide: true,
-                ajax: '{{ route('makanan.getData') }}',
-                columns: [
-                    { data: 'id', name: 'id' },
-                    { data: 'nama_Menu', name: 'nama_Menu' },
-                    { data: 'jumlah_Makanan', name: 'jumlah_Makanan' },
-                    { data: 'tanggal_Expired', name: 'tanggal_Expired' },
-                    { data: 'waktu', name: 'waktu' },
-                    { data: 'status', name: 'status' },
-                    { data: 'donatur.username', name: 'donatur.username' },
-                    { data: 'mitra.nama_mitra', name: 'mitra.nama_mitra' },
-                    { data: 'action', name: 'action' },
-                ]
+    @push('scripts')
+        <script>
+            $(document).ready(function() {
+                $('#makanan-table').DataTable({
+                    processing: true,
+                    serverSide: true,
+                    ajax: '{!! route('makanan.data') !!}',
+                    columns: [
+                        { data: 'DT_RowIndex', name: 'DT_RowIndex' },
+                        { data: 'nama_menu', name: 'nama_menu' },
+                        { data: 'jumlah_makanan', name: 'jumlah_makanan' },
+                        { data: 'tanggal_expired', name: 'tanggal_expired' },
+                        { data: 'waktu', name: 'waktu' },
+                        { data: 'status', name: 'status' },
+                        { data: 'donatur.nama_donatur', name: 'donatur.nama_donatur' },
+                        { data: 'mitra.nama_mitra', name: 'mitra.nama_mitra' },
+                        { data: 'action', name: 'action', orderable: false, searchable: false },
+                    ],
+                });
             });
-        });
-    </script>
+        </script>
+    @endpush
 @endsection

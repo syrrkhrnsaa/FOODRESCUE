@@ -82,15 +82,14 @@ Route::put('/mitra/{mitra}', [MitraController::class, 'update'])->name('mitra.up
 Route::delete('/mitra/{mitra}', [MitraController::class, 'destroy'])->name('mitra.destroy');
 
 
-Route::get('makanan', [MakananController::class, 'index'])->name('makanan.index');
-Route::resource('makanan', MakananController::class);
-Route::get('makanan/getData', [MakananController::class, 'getData'])->name('makanan.getData');
-Route::get('makanan/create', [MakananController::class, 'create'])->name('makanan.create');
-Route::post('makanan/store', [MakananController::class, 'store'])->name('makanan.store');
-Route::get('makanan/{id}', [MakananController::class, 'show'])->name('makanan.show');
-Route::get('makanan/{id}/edit', [MakananController::class, 'edit'])->name('makanan.edit');
-Route::put('makanan/{id}', [MakananController::class, 'update'])->name('makanan.update');
-Route::delete('makanan/{id}', [MakananController::class, 'destroy'])->name('makanan.destroy');
+Route::get('/makanan', [MakananController::class, 'index'])->name('makanan.index');
+Route::get('/makanan/data', [MakananController::class, 'makananData'])->name('makanan.data');
+Route::get('/makanan/create', [MakananController::class, 'create'])->name('makanan.create');
+Route::post('/makanan', [MakananController::class, 'store'])->name('makanan.store');
+Route::get('/makanan/{makanan}', [MakananController::class, 'show'])->name('makanan.show');
+Route::get('/makanan/{makanan}/edit', [MakananController::class, 'edit'])->name('makanan.edit');
+Route::put('/makanan/{makanan}', [MakananController::class, 'update'])->name('makanan.update');
+Route::delete('/makanan/{makanan}', [MakananController::class, 'destroy'])->name('makanan.destroy');
 
 
 // Route untuk menampilkan halaman daftar ulasan
