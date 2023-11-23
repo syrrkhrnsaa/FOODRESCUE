@@ -8,7 +8,6 @@
             <div class="col-md-12">
                 <h1>Daftar Mitra</h1>
                 <a href="{{ route('mitra.create') }}" class="btn btn-primary mb-3">Add New Mitra</a>
-
                 <table class="table" id="mitra-table">
                     <thead>
                         <tr>
