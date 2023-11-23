@@ -1,7 +1,6 @@
 <!-- resources/views/ulasan/show.blade.php -->
 
-@extends('layouts.app') <!-- Jika menggunakan layout -->
-
+@extends('layouts.base_admin.base_dashboard')
 @section('content')
     <div class="container">
         <h1>Detail Ulasan</h1>
