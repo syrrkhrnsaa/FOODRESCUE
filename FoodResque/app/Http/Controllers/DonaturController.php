@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Donatur;
+use Mpdf\Mpdf;
 
 class DonaturController extends Controller
 {
@@ -53,6 +54,23 @@ class DonaturController extends Controller
     public function show(Donatur $donatur)
     {
         return view('donatur.show', compact('donatur'));
+    }
+
+    public function exportPdf()
+    {
+        $donatur = Donatur::select(['id', 'username', 'nama_donatur', 'alamat', 'no_telp'])->get();
+
+        // Load the Blade view as a string
+        $html = view('donatur.export-pdf', compact('donatur'))->render();
+
+        // Create Mpdf instance
+        $mpdf = new Mpdf();
+
+        // Write HTML to PDF
+        $mpdf->WriteHTML($html);
+
+        // Output PDF as a download
+        $mpdf->Output('donatur.pdf', 'D');
     }
 
     public function edit(Donatur $donatur)

@@ -69,6 +69,7 @@ Route::put('/donatur/{donatur}', [DonaturController::class, 'update'])->name('do
 
 // Rute untuk menghapus donatur
 Route::delete('/donatur/{donatur}', [DonaturController::class, 'destroy'])->name('donatur.destroy');
+Route::get('/donatur/export-pdf', [DonaturController::class, 'exportPdf'])->name('donatur.exportPdf');
 
 //MITRA
 Route::get('/mitra', [MitraController::class, 'index'])->name('mitra.index');
