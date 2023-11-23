@@ -7,7 +7,7 @@ use App\Http\Controllers\HomeController;
 use App\Http\Controllers\DonaturController;
 use App\Http\Controllers\MitraController;
 use App\Http\Controllers\MakananController;
-
+use App\Http\Controllers\UlasanController;
 
 /*
 |--------------------------------------------------------------------------
@@ -91,3 +91,18 @@ Route::get('makanan/{id}', [MakananController::class, 'show'])->name('makanan.sh
 Route::get('makanan/{id}/edit', [MakananController::class, 'edit'])->name('makanan.edit');
 Route::put('makanan/{id}', [MakananController::class, 'update'])->name('makanan.update');
 Route::delete('makanan/{id}', [MakananController::class, 'destroy'])->name('makanan.destroy');
+
+//ULASAN
+
+Route::get('/ulasan', [UlasanController::class, 'index'])->name('ulasan.index');
+Route::get('/ulasan/data', [UlasanController::class, 'getData'])->name('ulasan.data');
+
+Route::get('/ulasan/create', [UlasanController::class, 'create'])->name('ulasan.create');
+Route::post('/ulasan', [UlasanController::class, 'store'])->name('ulasan.store');
+Route::get('/ulasan/{ulasan}', [UlasanController::class, 'show'])->name('ulasan.show');
+Route::get('/ulasan/{ulasan}/edit', [UlasanController::class, 'edit'])->name('ulasan.edit');
+Route::put('/ulasan/{ulasan}', [UlasanController::class, 'update'])->name('ulasan.update');
+Route::delete('/ulasan/{ulasan}', [UlasanController::class, 'destroy'])->name('ulasan.destroy');
+
+
+
