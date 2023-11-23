@@ -4,7 +4,15 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
+<<<<<<< HEAD
+<<<<<<< HEAD
+    "content-hash": "54e5096ae6dcc2b2fc90ffad0fa298d4",
+=======
     "content-hash": "37114bbe2ed669fff57040eb8e1c7f77",
+>>>>>>> ca95cb0ba6ad7e5665e50a343c7e9bde245c2229
+=======
+    "content-hash": "54e5096ae6dcc2b2fc90ffad0fa298d4",
+>>>>>>> afyar
     "packages": [
         {
             "name": "afrizalmy/laraindo",
@@ -5898,6 +5906,29 @@
             "time": "2022-06-03T18:03:27+00:00"
         },
         {
+<<<<<<< HEAD
+<<<<<<< HEAD
+            "name": "yajra/laravel-datatables-oracle",
+            "version": "v10.11.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/yajra/laravel-datatables.git",
+                "reference": "6badd623d6352284a926de604b55db881057ca67"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/yajra/laravel-datatables/zipball/6badd623d6352284a926de604b55db881057ca67",
+                "reference": "6badd623d6352284a926de604b55db881057ca67",
+                "shasum": ""
+            },
+            "require": {
+                "illuminate/database": "^9|^10",
+                "illuminate/filesystem": "^9|^10",
+                "illuminate/http": "^9|^10",
+                "illuminate/support": "^9|^10",
+                "illuminate/view": "^9|^10",
+                "php": "^8.0.2"
+=======
             "name": "yajra/laravel-datatables-buttons",
             "version": "v9.1.4",
             "source": {
@@ -6002,10 +6033,15 @@
                 "laravelcollective/html": "^6.3.0",
                 "php": "^8.0.2",
                 "yajra/laravel-datatables-oracle": "^10.0"
+>>>>>>> ca95cb0ba6ad7e5665e50a343c7e9bde245c2229
             },
             "require-dev": {
-                "nunomaduro/larastan": "^2.1",
-                "orchestra/testbench": "^7.3"
+                "algolia/algoliasearch-client-php": "^3.4",
+                "laravel/scout": "^10.5",
+                "meilisearch/meilisearch-php": "^1.4",
+                "nunomaduro/larastan": "^2.4",
+                "orchestra/testbench": "^8",
+                "yajra/laravel-datatables-html": "^9.3.4|^10"
             },
             "type": "library",
             "extra": {
@@ -6062,6 +6098,8 @@
             "time": "2023-02-20T07:44:43+00:00"
         },
         {
+=======
+>>>>>>> afyar
             "name": "yajra/laravel-datatables-oracle",
             "version": "v10.11.0",
             "source": {

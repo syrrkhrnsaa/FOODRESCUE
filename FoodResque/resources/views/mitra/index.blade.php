@@ -8,7 +8,7 @@
             <div class="col-md-12">
                 <h1>Daftar Mitra</h1>
                 <a href="{{ route('mitra.create') }}" class="btn btn-primary mb-3">Add New Mitra</a>
-                
+
                 <table class="table" id="mitra-table">
                     <thead>
                         <tr>
@@ -24,24 +24,24 @@
             </div>
         </div>
     </div>
-@endsection
 
-@push('scripts')
-<script>
-    $(document).ready(function() {
-        $('#mitra-table').DataTable({
-            processing: true,
-            serverSide: true,
-            ajax: '{{ route('mitra.data') }}',
-            columns: [
-                { data: 'mitra_id', name: 'mitra_id' },
-                { data: 'username', name: 'username' },
-                { data: 'nama_mitra', name: 'nama_mitra' },
-                { data: 'alamat', name: 'alamat' },
-                { data: 'no_telp', name: 'no_telp' },
-                { data: 'action', name: 'action', orderable: false, searchable: false },
-            ]
-        });
-    });
-</script>
-@endpush
+    @push('scripts')
+        <script>
+            $(function() {
+                $('#mitra-table').DataTable({
+                    processing: true,
+                    serverSide: true,
+                    ajax: '{!! route('mitra.data') !!}',
+                    columns: [
+                        { data: 'id', name: 'id' },
+                        { data: 'username', name: 'username' },
+                        { data: 'nama_mitra', name: 'nama_mitra' },
+                        { data: 'alamat', name: 'alamat' },
+                        { data: 'no_telp', name: 'no_telp' },
+                        { data: 'action', name: 'action', orderable: false, searchable: false }
+                    ],
+                });
+            });
+        </script>
+    @endpush
+@endsection
