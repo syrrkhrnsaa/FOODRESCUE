@@ -6179,7 +6179,6 @@
             "time": "2022-06-03T18:03:27+00:00"
         },
         {
-<<<<<<< HEAD
             "name": "yajra/laravel-datatables-buttons",
             "version": "v9.1.4",
             "source": {
@@ -6344,8 +6343,6 @@
             "time": "2023-02-20T07:44:43+00:00"
         },
         {
-=======
->>>>>>> f6d78017c615dee73266d00a7d08929d9c4ab8d9
             "name": "yajra/laravel-datatables-oracle",
             "version": "v10.11.0",
             "source": {
