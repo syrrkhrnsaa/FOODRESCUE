@@ -6,7 +6,8 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\DonaturController;
 use App\Http\Controllers\MitraController;
-
+use App\Http\Controllers\MakananController;
+use App\Http\Controllers\UlasanController;
 
 /*
 |--------------------------------------------------------------------------
@@ -79,3 +80,38 @@ Route::get('/mitra/{mitra}', [MitraController::class, 'show'])->name('mitra.show
 Route::get('/mitra/{mitra}/edit', [MitraController::class, 'edit'])->name('mitra.edit');
 Route::put('/mitra/{mitra}', [MitraController::class, 'update'])->name('mitra.update');
 Route::delete('/mitra/{mitra}', [MitraController::class, 'destroy'])->name('mitra.destroy');
+
+
+Route::get('makanan', [MakananController::class, 'index'])->name('makanan.index');
+Route::resource('makanan', MakananController::class);
+Route::get('makanan/getData', [MakananController::class, 'getData'])->name('makanan.getData');
+Route::get('makanan/create', [MakananController::class, 'create'])->name('makanan.create');
+Route::post('makanan/store', [MakananController::class, 'store'])->name('makanan.store');
+Route::get('makanan/{id}', [MakananController::class, 'show'])->name('makanan.show');
+Route::get('makanan/{id}/edit', [MakananController::class, 'edit'])->name('makanan.edit');
+Route::put('makanan/{id}', [MakananController::class, 'update'])->name('makanan.update');
+Route::delete('makanan/{id}', [MakananController::class, 'destroy'])->name('makanan.destroy');
+
+
+// Route untuk menampilkan halaman daftar ulasan
+Route::get('/ulasan', [UlasanController::class, 'index'])->name('ulasan.index');
+
+// Route untuk menampilkan form tambah ulasan
+Route::get('/ulasan/create', [UlasanController::class, 'create'])->name('ulasan.create');
+
+// Route untuk menyimpan ulasan baru dari form create
+Route::post('/ulasan', [UlasanController::class, 'store'])->name('ulasan.store');
+
+// Route untuk menampilkan detail ulasan
+Route::get('/ulasan/{id}', [UlasanController::class, 'show'])->name('ulasan.show');
+
+// Route untuk menampilkan form edit ulasan
+Route::get('/ulasan/{id}/edit', [UlasanController::class, 'edit'])->name('ulasan.edit');
+
+// Route untuk menyimpan perubahan pada ulasan dari form edit
+Route::put('/ulasan/{id}', [UlasanController::class, 'update'])->name('ulasan.update');
+
+// Route untuk menghapus ulasan
+Route::delete('/ulasan/{id}', [UlasanController::class, 'destroy'])->name('ulasan.destroy');
+
+

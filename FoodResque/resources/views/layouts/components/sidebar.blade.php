@@ -30,6 +30,16 @@ $links = [
                 "section_text" => "Mitra",
                 "section_icon" => "far fa-circle",
                 "section_href" => route('mitra.index')
+            ],
+            [
+                "section_text" => "Makanan",
+                "section_icon" => "far fa-circle",
+                "section_href" => route('makanan.index')
+            ],
+            [
+                "section_text" => "Ulasan",
+                "section_icon" => "far fa-circle",
+                "section_href" => route('ulasan.index')
             ]
         ]
     ]
