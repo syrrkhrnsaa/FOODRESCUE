@@ -15,14 +15,15 @@ return new class extends Migration
     {
         Schema::create('makanan', function (Blueprint $table) {
             $table->id();
+            $table->text('foto');
             $table->string('nama_Menu');
             $table->integer('jumlah_Makanan');
             $table->date('tanggal_Expired');
             $table->time('waktu');
-            $table->string('status');
+            $table->enum('status',['ready', 'occupied', 'finished'])->default('ready');
             $table->unsignedBigInteger('donatur_id');
             $table->foreign('donatur_id')->references('id')->on('donatur');
-            $table->unsignedInteger('mitra_id');
+            $table->unsignedInteger('mitra_id')->nullable();
             $table->foreign('mitra_id')->references('id')->on('mitra');
             $table->timestamps();
         });

@@ -1,6 +1,4 @@
-<!-- resources/views/ulasan/edit.blade.php -->
-
-@extends('layouts.app') <!-- Jika menggunakan layout -->
+@extends('layouts.base_admin.base_dashboard')
 
 @section('content')
     <div class="container">
@@ -21,13 +19,28 @@
             @method('PUT')
 
             <div class="form-group">
-                <label for="judul">Judul:</label>
-                <input type="text" class="form-control" id="judul" name="judul" value="{{ $ulasan->judul }}">
+                <label for="mitra_id">Mitra:</label>
+                <select class="form-control" id="mitra_id" name="mitra_id">
+                    <!-- Populate this dropdown with Mitra options -->
+                    @foreach ($mitras as $mitra)
+                        <option value="{{ $mitra->id }}" @if ($ulasan->mitra_id == $mitra->id) selected @endif>{{ $mitra->name }}</option>
+                    @endforeach
+                </select>
             </div>
 
             <div class="form-group">
-                <label for="isi">Isi Ulasan:</label>
-                <textarea class="form-control" id="isi" name="isi" rows="5">{{ $ulasan->isi }}</textarea>
+                <label for="makanan_id">Makanan:</label>
+                <select class="form-control" id="makanan_id" name="makanan_id">
+                    <!-- Populate this dropdown with Makanan options -->
+                    @foreach ($makanans as $makanan)
+                        <option value="{{ $makanan->id }}" @if ($ulasan->makanan_id == $makanan->id) selected @endif>{{ $makanan->name }}</option>
+                    @endforeach
+                </select>
+            </div>
+
+            <div class="form-group">
+                <label for="isi_ulasan">Isi Ulasan:</label>
+                <textarea class="form-control" id="isi_ulasan" name="isi_ulasan" rows="5">{{ $ulasan->isi_ulasan }}</textarea>
             </div>
 
             <button type="submit" class="btn btn-primary">Simpan Perubahan</button>
