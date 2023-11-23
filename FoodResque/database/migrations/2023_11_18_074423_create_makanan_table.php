@@ -16,9 +16,9 @@ return new class extends Migration
         Schema::create('makanan', function (Blueprint $table) {
             $table->id();
             $table->text('foto');
-            $table->string('nama_Menu');
-            $table->integer('jumlah_Makanan');
-            $table->date('tanggal_Expired');
+            $table->string('nama_menu');
+            $table->integer('jumlah_makanan');
+            $table->date('tanggal_expired');
             $table->time('waktu');
             $table->enum('status',['ready', 'occupied', 'finished'])->default('ready');
             $table->unsignedBigInteger('donatur_id');

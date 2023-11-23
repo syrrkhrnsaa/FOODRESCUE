@@ -16,23 +16,23 @@ class DonaturController extends Controller
     }
 
     public function donaturData()
-    {
-        $donatur = Donatur::select(['id', 'username', 'nama_donatur', 'alamat', 'no_telp']);
+{
+    $donatur = Donatur::select(['id', 'username', 'nama_donatur', 'alamat', 'no_telp']);
 
-        return datatables()->of($donatur)
-            ->addColumn('action', function ($donatur) {
-                $btn = '<a href="' . route('donatur.show', $donatur->id) . '" class="btn btn-xs btn-success">Show</a> ';
-                $btn .= '<a href="' . route('donatur.edit', $donatur->id) . '" class="btn btn-xs btn-primary">Edit</a> ';
-                $btn .= '<form action="' . route('donatur.destroy', $donatur->id) . '" method="POST" style="display:inline">
-                            ' . method_field('DELETE') . csrf_field() . '
-                            <button type="submit" class="btn btn-xs btn-danger" onclick="return confirm(\'Are you sure?\')">Delete</button>
-                        </form>';
+    return datatables()->of($donatur)
+        ->addColumn('action', function ($donatur) {
+            $btn = '<a href="' . route('donatur.show', $donatur->id) . '" class="btn btn-xs btn-success">Show</a> ';
+            $btn .= '<a href="' . route('donatur.edit', $donatur->id) . '" class="btn btn-xs btn-primary">Edit</a> ';
+            $btn .= '<form action="' . route('donatur.destroy', $donatur->id) . '" method="POST" style="display:inline">
+                        ' . method_field('DELETE') . csrf_field() . '
+                        <button type="submit" class="btn btn-xs btn-danger" onclick="return confirm(\'Are you sure?\')">Delete</button>
+                    </form>';
 
-                return $btn;
-            })
-            ->rawColumns(['action'])
-            ->make(true);
-    }
+            return $btn;
+        })
+        ->rawColumns(['action'])
+        ->make(true);
+}
 
     public function create()
     {
@@ -60,19 +60,11 @@ class DonaturController extends Controller
 
     public function exportPdf()
     {
-        $donatur = Donatur::select(['id', 'username', 'nama_donatur', 'alamat', 'no_telp'])->get();
+        $donaturData = Donatur::all(); // Replace with your actual query
 
-        // Load the Blade view as a string
-        $html = view('donatur.export-pdf', compact('donatur'))->render();
-
-        // Create Mpdf instance
         $mpdf = new Mpdf();
-
-        // Write HTML to PDF
-        $mpdf->WriteHTML($html);
-
-        // Output PDF as a download
-        $mpdf->Output('donatur.pdf', 'D');
+        $mpdf->WriteHTML(view('donatur.pdf', ['donaturData' => $donaturData])->render());
+        $mpdf->Output('donatur_list.pdf', 'D');
     }
 
     public function edit(Donatur $donatur)

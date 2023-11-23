@@ -49,6 +49,7 @@ Route::group(['prefix' => 'dashboard/admin'], function () {
 // Rute untuk menampilkan daftar donatur
 Route::get('/donatur', [DonaturController::class, 'index'])->name('donatur.index');
 Route::get('/donatur/data', [DonaturController::class, 'donaturData'])->name('donatur.data');
+Route::get('donatur/export-pdf', [DonaturController::class, 'exportPdf'])->name('donatur.exportPdf');
 
 
 // Rute untuk menampilkan formulir tambah donatur
@@ -69,7 +70,6 @@ Route::put('/donatur/{donatur}', [DonaturController::class, 'update'])->name('do
 
 // Rute untuk menghapus donatur
 Route::delete('/donatur/{donatur}', [DonaturController::class, 'destroy'])->name('donatur.destroy');
-Route::get('/donatur/export-pdf', [DonaturController::class, 'exportPdf'])->name('donatur.exportPdf');
 
 //MITRA
 Route::get('/mitra', [MitraController::class, 'index'])->name('mitra.index');
@@ -83,18 +83,20 @@ Route::put('/mitra/{mitra}', [MitraController::class, 'update'])->name('mitra.up
 Route::delete('/mitra/{mitra}', [MitraController::class, 'destroy'])->name('mitra.destroy');
 
 
-Route::get('/makanan', [MakananController::class, 'index'])->name('makanan.index');
-Route::get('/makanan/data', [MakananController::class, 'makananData'])->name('makanan.data');
-Route::get('/makanan/create', [MakananController::class, 'create'])->name('makanan.create');
-Route::post('/makanan', [MakananController::class, 'store'])->name('makanan.store');
-Route::get('/makanan/{makanan}', [MakananController::class, 'show'])->name('makanan.show');
-Route::get('/makanan/{makanan}/edit', [MakananController::class, 'edit'])->name('makanan.edit');
-Route::put('/makanan/{makanan}', [MakananController::class, 'update'])->name('makanan.update');
-Route::delete('/makanan/{makanan}', [MakananController::class, 'destroy'])->name('makanan.destroy');
+Route::get('makanan', [MakananController::class, 'index'])->name('makanan.index');
+Route::resource('makanan', MakananController::class);
+Route::get('makanan/getData', [MakananController::class, 'getData'])->name('makanan.getData');
+Route::get('makanan/create', [MakananController::class, 'create'])->name('makanan.create');
+Route::post('makanan/store', [MakananController::class, 'store'])->name('makanan.store');
+Route::get('makanan/{id}', [MakananController::class, 'show'])->name('makanan.show');
+Route::get('makanan/{id}/edit', [MakananController::class, 'edit'])->name('makanan.edit');
+Route::put('makanan/{id}', [MakananController::class, 'update'])->name('makanan.update');
+Route::delete('makanan/{id}', [MakananController::class, 'destroy'])->name('makanan.destroy');
 
 
 // Route untuk menampilkan halaman daftar ulasan
-Route::get('/ulasan', [UlasanController::class, 'index'])->name('ulasan.index');
+Route::get('ulasan', [UlasanController::class, 'index'])->name('ulasan.index');
+Route::get('ulasan/data', [UlasanController::class, 'indexData'])->name('ulasan.data');
 
 // Route untuk menampilkan form tambah ulasan
 Route::get('/ulasan/create', [UlasanController::class, 'create'])->name('ulasan.create');
@@ -113,4 +115,5 @@ Route::put('/ulasan/{id}', [UlasanController::class, 'update'])->name('ulasan.up
 
 // Route untuk menghapus ulasan
 Route::delete('/ulasan/{id}', [UlasanController::class, 'destroy'])->name('ulasan.destroy');
+
 

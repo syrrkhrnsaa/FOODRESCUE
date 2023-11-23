@@ -14,9 +14,9 @@ class Makanan extends Model
     protected $table = 'makanan';
     protected $primaryKey = 'id';
     protected $fillable = [
-        'nama_Menu',
-        'jumlah_Makanan',
-        'tanggal_Expired',
+        'nama_menu',
+        'jumlah_makanan',
+        'tanggal_expired',
         'waktu',
         'status',
         'donatur_id',
