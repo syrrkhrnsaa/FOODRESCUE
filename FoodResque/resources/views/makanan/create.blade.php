@@ -27,14 +27,14 @@
                 <label for="status">Status:</label>
                 <input type="text" class="form-control" id="status" name="status" required>
             </div>
-            <div class="form-group">
+            {{-- <div class="form-group">
                 <label for="donatur_id">Donatur ID:</label>
                 <input type="number" class="form-control" id="donatur_id" name="donatur_id" required>
             </div>
             <div class="form-group">
                 <label for="mitra_id">Mitra ID:</label>
                 <input type="number" class="form-control" id="mitra_id" name="mitra_id" required>
-            </div>
+            </div> --}}
             <button type="submit" class="btn btn-primary">Simpan</button>
         </form>
     </div>
