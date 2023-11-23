@@ -1,6 +1,5 @@
 <!-- resources/views/ulasan/edit.blade.php -->
-
-@extends('layouts.app') <!-- Jika menggunakan layout -->
+@extends('layouts.base_admin.base_dashboard')
 
 @section('content')
     <div class="container">
