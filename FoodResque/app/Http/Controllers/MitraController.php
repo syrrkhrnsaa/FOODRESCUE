@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Mitra;
-use DataTables;
+use Yajra\DataTables\DataTables;
 
 class MitraController extends Controller
 {
