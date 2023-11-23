@@ -9,6 +9,7 @@
     <table class="table" id="donatur-table">
         <thead>
             <tr>
+            <th>ID</th>
                 <th>Username</th>
                 <th>Nama Donatur</th>
                 <th>Alamat</th>
@@ -29,6 +30,7 @@
             serverSide: true,
             ajax: '{{ route('donatur.data') }}',
             columns: [
+                { data: 'id', name: 'id' },
                 { data: 'username', name: 'username' },
                 { data: 'nama_donatur', name: 'nama_donatur' },
                 { data: 'alamat', name: 'alamat' },
