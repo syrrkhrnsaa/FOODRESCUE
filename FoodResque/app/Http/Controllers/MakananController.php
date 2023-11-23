@@ -1,7 +1,7 @@
 <?php
 
 namespace App\Http\Controllers;
-use DataTables;
+use Yajra\DataTables\DataTables;
 use App\Models\Makanan;
 use Illuminate\Http\Request;
 
