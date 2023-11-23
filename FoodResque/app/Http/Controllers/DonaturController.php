@@ -16,23 +16,23 @@ class DonaturController extends Controller
     }
 
     public function donaturData()
-    {
-        $donatur = Donatur::select(['id', 'username', 'nama_donatur', 'alamat', 'no_telp']);
+{
+    $donatur = Donatur::select(['id', 'username', 'nama_donatur', 'alamat', 'no_telp']);
 
-        return datatables()->of($donatur)
-            ->addColumn('action', function ($donatur) {
-                $btn = '<a href="' . route('donatur.show', $donatur->id) . '" class="btn btn-xs btn-success">Show</a> ';
-                $btn .= '<a href="' . route('donatur.edit', $donatur->id) . '" class="btn btn-xs btn-primary">Edit</a> ';
-                $btn .= '<form action="' . route('donatur.destroy', $donatur->id) . '" method="POST" style="display:inline">
-                            ' . method_field('DELETE') . csrf_field() . '
-                            <button type="submit" class="btn btn-xs btn-danger" onclick="return confirm(\'Are you sure?\')">Delete</button>
-                        </form>';
+    return datatables()->of($donatur)
+        ->addColumn('action', function ($donatur) {
+            $btn = '<a href="' . route('donatur.show', $donatur->id) . '" class="btn btn-xs btn-success">Show</a> ';
+            $btn .= '<a href="' . route('donatur.edit', $donatur->id) . '" class="btn btn-xs btn-primary">Edit</a> ';
+            $btn .= '<form action="' . route('donatur.destroy', $donatur->id) . '" method="POST" style="display:inline">
+                        ' . method_field('DELETE') . csrf_field() . '
+                        <button type="submit" class="btn btn-xs btn-danger" onclick="return confirm(\'Are you sure?\')">Delete</button>
+                    </form>';
 
-                return $btn;
-            })
-            ->rawColumns(['action'])
-            ->make(true);
-    }
+            return $btn;
+        })
+        ->rawColumns(['action'])
+        ->make(true);
+}
 
     public function create()
     {
@@ -58,21 +58,15 @@ class DonaturController extends Controller
         return view('donatur.show', compact('donatur'));
     }
 
-    public function exportPdf()
+    public function generatePDF($id)
     {
-        $donatur = Donatur::select(['id', 'username', 'nama_donatur', 'alamat', 'no_telp'])->get();
+        $donatur = Donatur::with('Have')->find($id);
 
-        // Load the Blade view as a string
-        $html = view('donatur.export-pdf', compact('donatur'))->render();
+        // Tampilkan view PDF
+        $pdf = PDF::loadView('donatur.pdf', compact('donatur'));
 
-        // Create Mpdf instance
-        $mpdf = new Mpdf();
-
-        // Write HTML to PDF
-        $mpdf->WriteHTML($html);
-
-        // Output PDF as a download
-        $mpdf->Output('donatur.pdf', 'D');
+        // Download PDF dengan nama tertentu
+        return $pdf->download('donatur_'.$donatur->username.'.pdf');
     }
 
     public function edit(Donatur $donatur)
