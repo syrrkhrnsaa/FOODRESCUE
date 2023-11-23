@@ -25,21 +25,21 @@
     </div>
 
     @push('scripts')
-        <script>
-            $(function() {
-                $('#ulasan-table').DataTable({
-                    processing: true,
-                    serverSide: true,
-                    ajax: '{!! route('ulasan.index') !!}',
-                    columns: [
-                        { data: 'id', name: 'id' },
-                        { data: 'mitra_id', name: 'mitra_id' },
-                        { data: 'makanan_id', name: 'makanan_id' },
-                        { data: 'isi_ulasan', name: 'isi_ulasan' },
-                        { data: 'action', name: 'action', orderable: false, searchable: false },
-                    ]
-                });
-            });
-        </script>
+    <script>
+    $(function() {
+        $('#ulasan-table').DataTable({
+            processing: true,
+            serverSide: true,
+            ajax: '{{ route('ulasan.data') }}',
+            columns: [
+                { data: 'id', name: 'id' },
+                { data: 'mitra_id', name: 'mitra_id' },
+                { data: 'makanan_id', name: 'makanan_id' },
+                { data: 'isi_ulasan', name: 'isi_ulasan' },
+                { data: 'action', name: 'action', orderable: false, searchable: false },
+            ]
+        });
+    });
+</script>
     @endpush
 @endsection

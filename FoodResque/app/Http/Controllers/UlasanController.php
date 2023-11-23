@@ -13,24 +13,21 @@ class UlasanController extends Controller
 
     public function index(Request $request)
     {
-        if ($request->ajax()) {
-            $data = Ulasan::with(['mitra:id,name', 'makanan:id,name'])->get();
-
-            return DataTables::of($data)
-                ->addColumn('mitra_id', function($ulasan) {
-                    return $ulasan->mitra->id;
-                })
-                ->addColumn('makanan_id', function($ulasan) {
-                    return $ulasan->makanan->id;
-                })
-                ->addColumn('action', function($ulasan) {
-                    return view('ulasan.actions', compact('ulasan'))->render();
-                })
-                ->make(true);
-        }
-
         return view('ulasan.index');
     }
+
+    public function indexData()
+    {
+        $data = Ulasan::latest()->get();
+        return DataTables::of($data)
+            ->addColumn('action', function ($row) {
+                // You can add action buttons here if needed
+                return '<button class="btn btn-sm btn-danger">Delete</button>';
+            })
+            ->rawColumns(['action'])
+            ->make(true);
+    }
+
     public function create()
     {
         $mitras = Mitra::all(['id']);
