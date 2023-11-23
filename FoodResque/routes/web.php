@@ -114,4 +114,3 @@ Route::put('/ulasan/{id}', [UlasanController::class, 'update'])->name('ulasan.up
 // Route untuk menghapus ulasan
 Route::delete('/ulasan/{id}', [UlasanController::class, 'destroy'])->name('ulasan.destroy');
 
-

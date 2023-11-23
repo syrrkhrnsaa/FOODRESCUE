@@ -1,6 +1,5 @@
-<!-- resources/views/ulasan/index.blade.php -->
-
 @extends('layouts.base_admin.base_dashboard')
+
 @section('content')
     <div class="container">
         <h1>Daftar Ulasan</h1>
@@ -12,33 +11,35 @@
 
         <a href="{{ route('ulasan.create') }}" class="btn btn-primary mb-3">Tambah Ulasan</a>
 
-        <table class="table">
+        <table class="table" id="ulasan-table">
             <thead>
                 <tr>
                     <th>ID</th>
-                    <th>Judul</th>
+                    <th>Mitra</th>
+                    <th>Makanan</th>
                     <th>Isi Ulasan</th>
                     <th>Aksi</th>
                 </tr>
             </thead>
-            <tbody>
-                @foreach($ulasan as $u)
-                    <tr>
-                        <td>{{ $u->id }}</td>
-                        <td>{{ $u->judul }}</td>
-                        <td>{{ $u->isi }}</td>
-                        <td>
-                            <a href="{{ route('ulasan.show', $u->id) }}" class="btn btn-info">Tampilkan</a>
-                            <a href="{{ route('ulasan.edit', $u->id) }}" class="btn btn-warning">Edit</a>
-                            <form action="{{ route('ulasan.destroy', $u->id) }}" method="POST" style="display: inline;">
-                                @csrf
-                                @method('DELETE')
-                                <button type="submit" class="btn btn-danger" onclick="return confirm('Apakah Anda yakin ingin menghapus ulasan ini?')">Hapus</button>
-                            </form>
-                        </td>
-                    </tr>
-                @endforeach
-            </tbody>
         </table>
     </div>
+
+    @push('scripts')
+        <script>
+            $(function() {
+                $('#ulasan-table').DataTable({
+                    processing: true,
+                    serverSide: true,
+                    ajax: '{!! route('ulasan.index') !!}',
+                    columns: [
+                        { data: 'id', name: 'id' },
+                        { data: 'mitra_id', name: 'mitra_id' },
+                        { data: 'makanan_id', name: 'makanan_id' },
+                        { data: 'isi_ulasan', name: 'isi_ulasan' },
+                        { data: 'action', name: 'action', orderable: false, searchable: false },
+                    ]
+                });
+            });
+        </script>
+    @endpush
 @endsection

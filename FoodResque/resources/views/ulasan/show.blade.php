@@ -1,14 +1,14 @@
-<!-- resources/views/ulasan/show.blade.php -->
-
 @extends('layouts.base_admin.base_dashboard')
+
 @section('content')
     <div class="container">
         <h1>Detail Ulasan</h1>
 
         <div class="card">
             <div class="card-body">
-                <h5 class="card-title">Judul: {{ $ulasan->judul }}</h5>
-                <p class="card-text">Isi Ulasan: {{ $ulasan->isi }}</p>
+                <h5 class="card-title">Mitra: {{ $ulasan->mitra_id }}</h5>
+                <h5 class="card-title">Makanan: {{ $ulasan->makanan_id }}</h5>
+                <p class="card-text">Isi Ulasan: {{ $ulasan->isi_ulasan }}</p>
                 <p class="card-text">Dibuat pada: {{ $ulasan->created_at }}</p>
                 <p class="card-text">Diperbarui pada: {{ $ulasan->updated_at }}</p>
 
