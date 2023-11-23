@@ -58,15 +58,13 @@ class DonaturController extends Controller
         return view('donatur.show', compact('donatur'));
     }
 
-    public function generatePDF($id)
+    public function exportPdf()
     {
-        $donatur = Donatur::with('Have')->find($id);
+        $donaturData = Donatur::all(); // Replace with your actual query
 
-        // Tampilkan view PDF
-        $pdf = PDF::loadView('donatur.pdf', compact('donatur'));
-
-        // Download PDF dengan nama tertentu
-        return $pdf->download('donatur_'.$donatur->username.'.pdf');
+        $mpdf = new Mpdf();
+        $mpdf->WriteHTML(view('donatur.pdf', ['donaturData' => $donaturData])->render());
+        $mpdf->Output('donatur_list.pdf', 'D');
     }
 
     public function edit(Donatur $donatur)

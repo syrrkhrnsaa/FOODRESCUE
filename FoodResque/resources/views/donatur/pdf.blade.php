@@ -1,20 +1,42 @@
-<!DOCTYPE html>
-<html>
-<head>
-    <title>Data Donatur PDF</title>
-</head>
-<body>
-    <h2>Data Donatur</h2>
-    <p><strong>Username:</strong> {{ $donatur->username }}</p>
-    <p><strong>Nama Donatur:</strong> {{ $donatur->nama_donatur }}</p>
-    <p><strong>Alamat:</strong> {{ $donatur->alamat }}</p>
-    <p><strong>No. Telepon:</strong> {{ $donatur->no_telp }}</p>
+<!-- resources/views/donatur/pdf.blade.php -->
 
-    <h3>Makanan yang Dimiliki</h3>
-    <ul>
-        @foreach ($donatur->Have as $makanan)
-            <li>{{ $makanan->nama_makanan }}</li>
+<style>
+    table {
+        width: 100%;
+        border-collapse: collapse;
+        margin-bottom: 10px;
+    }
+
+    th, td {
+        border: 1px solid #ddd;
+        padding: 8px;
+        text-align: left;
+    }
+
+    th {
+        background-color: #f2f2f2;
+    }
+</style>
+
+<table>
+    <thead>
+        <tr>
+            <th>ID</th>
+            <th>Username</th>
+            <th>Nama Donatur</th>
+            <th>Alamat</th>
+            <th>No. Telepon</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach ($donaturData as $donatur)
+            <tr>
+                <td>{{ $donatur->id }}</td>
+                <td>{{ $donatur->username }}</td>
+                <td>{{ $donatur->nama_donatur }}</td>
+                <td>{{ $donatur->alamat }}</td>
+                <td>{{ $donatur->no_telp }}</td>
+            </tr>
         @endforeach
-    </ul>
-</body>
-</html>
+    </tbody>
+</table>

@@ -7,8 +7,9 @@
     <a href="{{ route('donatur.create') }}" class="btn btn-success">Tambah Donatur</a>
 
     <div class="mb-3">
-        <button id="export-pdf" class="btn btn-primary">Export to PDF</button>
-    </div>
+    <a href="{{ route('donatur.exportPdf') }}" class="btn btn-primary" target="_blank">Export to PDF</a>
+</div>
+
 
     <table class="table" id="donatur-table">
         <thead>
