@@ -92,17 +92,26 @@ Route::get('makanan/{id}/edit', [MakananController::class, 'edit'])->name('makan
 Route::put('makanan/{id}', [MakananController::class, 'update'])->name('makanan.update');
 Route::delete('makanan/{id}', [MakananController::class, 'destroy'])->name('makanan.destroy');
 
-//ULASAN
 
+// Route untuk menampilkan halaman daftar ulasan
 Route::get('/ulasan', [UlasanController::class, 'index'])->name('ulasan.index');
-Route::get('/ulasan/data', [UlasanController::class, 'getData'])->name('ulasan.data');
 
+// Route untuk menampilkan form tambah ulasan
 Route::get('/ulasan/create', [UlasanController::class, 'create'])->name('ulasan.create');
-Route::post('/ulasan', [UlasanController::class, 'store'])->name('ulasan.store');
-Route::get('/ulasan/{ulasan}', [UlasanController::class, 'show'])->name('ulasan.show');
-Route::get('/ulasan/{ulasan}/edit', [UlasanController::class, 'edit'])->name('ulasan.edit');
-Route::put('/ulasan/{ulasan}', [UlasanController::class, 'update'])->name('ulasan.update');
-Route::delete('/ulasan/{ulasan}', [UlasanController::class, 'destroy'])->name('ulasan.destroy');
 
+// Route untuk menyimpan ulasan baru dari form create
+Route::post('/ulasan', [UlasanController::class, 'store'])->name('ulasan.store');
+
+// Route untuk menampilkan detail ulasan
+Route::get('/ulasan/{id}', [UlasanController::class, 'show'])->name('ulasan.show');
+
+// Route untuk menampilkan form edit ulasan
+Route::get('/ulasan/{id}/edit', [UlasanController::class, 'edit'])->name('ulasan.edit');
+
+// Route untuk menyimpan perubahan pada ulasan dari form edit
+Route::put('/ulasan/{id}', [UlasanController::class, 'update'])->name('ulasan.update');
+
+// Route untuk menghapus ulasan
+Route::delete('/ulasan/{id}', [UlasanController::class, 'destroy'])->name('ulasan.destroy');
 
 

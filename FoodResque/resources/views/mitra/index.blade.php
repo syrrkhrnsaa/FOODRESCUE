@@ -25,19 +25,15 @@
         </div>
     </div>
 
-    <!-- Include jQuery and DataTables scripts -->
-    <script src="https://code.jquery.com/jquery-3.6.5.min.js"></script>
-    <script src="https://cdn.datatables.net/1.11.6/js/jquery.dataTables.min.js"></script>
-
     @push('scripts')
         <script>
             $(function() {
                 $('#mitra-table').DataTable({
                     processing: true,
                     serverSide: true,
-                    ajax: '{!! url('mitra') !!}',
+                    ajax: '{!! route('mitra.data') !!}',
                     columns: [
-                        { data: 'mitra_id', name: 'mitra_id' },
+                        { data: 'id', name: 'id' },
                         { data: 'username', name: 'username' },
                         { data: 'nama_mitra', name: 'nama_mitra' },
                         { data: 'alamat', name: 'alamat' },
@@ -49,23 +45,3 @@
         </script>
     @endpush
 @endsection
-
-@push('scripts')
-<script>
-    $(document).ready(function() {
-        $('#mitra-table').DataTable({
-            processing: true,
-            serverSide: true,
-            ajax: '{{ route('mitra.data') }}',
-            columns: [
-                { data: 'id', name: 'id' },
-                { data: 'username', name: 'username' },
-                { data: 'nama_mitra', name: 'nama_mitra' },
-                { data: 'alamat', name: 'alamat' },
-                { data: 'no_telp', name: 'no_telp' },
-                { data: 'action', name: 'action', orderable: false, searchable: false },
-            ]
-        });
-    });
-</script>
-@endpush
