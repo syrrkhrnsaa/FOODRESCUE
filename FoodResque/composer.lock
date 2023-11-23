@@ -5,10 +5,14 @@
         "This file is @generated automatically"
     ],
 <<<<<<< HEAD
+<<<<<<< HEAD
     "content-hash": "54e5096ae6dcc2b2fc90ffad0fa298d4",
 =======
     "content-hash": "37114bbe2ed669fff57040eb8e1c7f77",
 >>>>>>> ca95cb0ba6ad7e5665e50a343c7e9bde245c2229
+=======
+    "content-hash": "54e5096ae6dcc2b2fc90ffad0fa298d4",
+>>>>>>> afyar
     "packages": [
         {
             "name": "afrizalmy/laraindo",
@@ -5903,6 +5907,7 @@
         },
         {
 <<<<<<< HEAD
+<<<<<<< HEAD
             "name": "yajra/laravel-datatables-oracle",
             "version": "v10.11.0",
             "source": {
@@ -6093,6 +6098,8 @@
             "time": "2023-02-20T07:44:43+00:00"
         },
         {
+=======
+>>>>>>> afyar
             "name": "yajra/laravel-datatables-oracle",
             "version": "v10.11.0",
             "source": {
