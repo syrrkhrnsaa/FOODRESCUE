@@ -13,6 +13,7 @@ class MakananSeeder extends Seeder
 {
     public function run()
     {
+        $statuses = ['pending', 'approved', 'rejected'];
         // Clear existing records to start with a fresh database
         Makanan::truncate();
 
@@ -22,11 +23,11 @@ class MakananSeeder extends Seeder
             $mitra = Mitra::inRandomOrder()->first();
 
             Makanan::create([
-                'nama_Menu' => 'Menu ' . $i,
-                'jumlah_Makanan' => rand(1, 100),
-                'tanggal_Expired' => Carbon::now()->addDays(rand(1, 30)),
+                'nama_menu' => 'menu ' . $i,
+                'jumlah_makanan' => rand(1, 100),
+                'tanggal_expired' => Carbon::now()->addDays(rand(1, 30)),
                 'waktu' => Carbon::now(),
-                'status' => rand(0, 1),
+                'status' => 'ready',
                 'donatur_id' => $donatur->id,
                 'mitra_id' => $mitra->id,
                 'foto' => 'path/to/your/image.jpg', // Provide a value for 'foto'

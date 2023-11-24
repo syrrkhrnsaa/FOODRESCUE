@@ -20,7 +20,8 @@ class Makanan extends Model
         'waktu',
         'status',
         'donatur_id',
-        'mitra_id'
+        'mitra_id',
+        'foto'
     ];
 
     public function donatur():BelongsTo

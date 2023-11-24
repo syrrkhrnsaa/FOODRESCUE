@@ -22,13 +22,13 @@
 
     @push('scripts')
         <script>
-            $(document).ready(function() {
+            $(function() {
                 $('#makanan-table').DataTable({
                     processing: true,
                     serverSide: true,
                     ajax: '{!! route('makanan.data') !!}',
                     columns: [
-                        { data: 'DT_RowIndex', name: 'DT_RowIndex' },
+                        { data: 'id', name: 'id' },
                         { data: 'nama_menu', name: 'nama_menu' },
                         { data: 'jumlah_makanan', name: 'jumlah_makanan' },
                         { data: 'tanggal_expired', name: 'tanggal_expired' },

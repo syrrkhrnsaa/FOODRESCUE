@@ -84,8 +84,7 @@ Route::delete('/mitra/{mitra}', [MitraController::class, 'destroy'])->name('mitr
 
 
 Route::get('makanan', [MakananController::class, 'index'])->name('makanan.index');
-Route::resource('makanan', MakananController::class);
-Route::get('makanan/getData', [MakananController::class, 'getData'])->name('makanan.getData');
+Route::get('makanan/getData', [MakananController::class, 'makananData'])->name('makanan.data');
 Route::get('makanan/create', [MakananController::class, 'create'])->name('makanan.create');
 Route::post('makanan/store', [MakananController::class, 'store'])->name('makanan.store');
 Route::get('makanan/{id}', [MakananController::class, 'show'])->name('makanan.show');

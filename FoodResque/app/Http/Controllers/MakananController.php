@@ -18,7 +18,7 @@ class MakananController extends Controller
     public function makananData()
     {
         $makanans = Makanan::with(['donatur', 'mitra']) // Load relasi dengan Donatur dan Mitra
-            ->select(['id', 'nama_Menu', 'jumlah_Makanan', 'tanggal_Expired', 'waktu', 'status', 'donatur_id', 'mitra_id']);
+            ->select(['id', 'nama_menu', 'jumlah_makanan', 'tanggal_expired', 'waktu', 'status', 'donatur_id', 'mitra_id']);
 
         return DataTables::of($makanans)
             ->addColumn('action', function ($makanan) {
@@ -48,13 +48,14 @@ class MakananController extends Controller
     public function store(Request $request)
     {
         $validatedData = $request->validate([
-            'nama_Menu' => 'required|string',
-            'jumlah_Makanan' => 'required|integer',
-            'tanggal_Expired' => 'required|date',
+            'nama_menu' => 'required|string',
+            'jumlah_makanan' => 'required|integer',
+            'tanggal_expired' => 'required|date',
             'waktu' => 'required|date_format:H:i',
-            'status' => 'required|in:pending,approved,rejected',
+            'status' => 'required|string',
             'donatur_id' => 'required|exists:donaturs,id',
             'mitra_id' => 'nullable|exists:mitras,id', // Bisa null terlebih dahulu
+            'foto' => 'nullable'
         ]);
 
         Makanan::create($validatedData);
@@ -81,13 +82,14 @@ class MakananController extends Controller
     {
         // Validasi input, sesuaikan aturan validasi sesuai kebutuhan Anda
         $request->validate([
-            'nama_Menu' => 'required|string',
-            'jumlah_Makanan' => 'required|integer',
-            'tanggal_Expired' => 'required|date',
-            'waktu' => 'required|time',
+            'nama_menu' => 'required|string',
+            'jumlah_makanan' => 'required|integer',
+            'tanggal_expired' => 'required|date',
+            'waktu' => 'required|date_format:H:i',
             'status' => 'required|string',
             'donatur_id' => 'required|exists:donatur,id',
             'mitra_id' => 'required|exists:mitra,id',
+            'foto' => 'nullable'
         ]);
 
         // Update data makanan berdasarkan ID

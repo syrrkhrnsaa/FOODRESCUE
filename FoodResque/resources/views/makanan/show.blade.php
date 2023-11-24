@@ -11,15 +11,15 @@
                     <tbody>
                         <tr>
                             <th>Nama Menu</th>
-                            <td>{{ $makanan->nama_Menu }}</td>
+                            <td>{{ $makanan->nama_menu }}</td>
                         </tr>
                         <tr>
                             <th>Jumlah Makanan</th>
-                            <td>{{ $makanan->jumlah_Makanan }}</td>
+                            <td>{{ $makanan->jumlah_makanan }}</td>
                         </tr>
                         <tr>
                             <th>Tanggal Expired</th>
-                            <td>{{ $makanan->tanggal_Expired }}</td>
+                            <td>{{ $makanan->tanggal_expired }}</td>
                         </tr>
                         <tr>
                             <th>Waktu</th>

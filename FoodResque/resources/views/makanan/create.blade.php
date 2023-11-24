@@ -8,16 +8,16 @@
         <form action="{{ route('makanan.store') }}" method="POST">
             @csrf
             <div class="form-group">
-                <label for="nama_Menu">Nama Menu:</label>
-                <input type="text" class="form-control" id="nama_Menu" name="nama_Menu" required>
+                <label for="nama_menu">Nama Menu:</label>
+                <input type="text" class="form-control" id="nama_menu" name="nama_menu" required>
             </div>
             <div class="form-group">
-                <label for="jumlah_Makanan">Jumlah Makanan:</label>
-                <input type="number" class="form-control" id="jumlah_Makanan" name="jumlah_Makanan" required>
+                <label for="jumlah_makanan">Jumlah Makanan:</label>
+                <input type="number" class="form-control" id="jumlah_makanan" name="jumlah_makanan" required>
             </div>
             <div class="form-group">
-                <label for="tanggal_Expired">Tanggal Expired:</label>
-                <input type="date" class="form-control" id="tanggal_Expired" name="tanggal_Expired" required>
+                <label for="tanggal_expired">Tanggal Expired:</label>
+                <input type="date" class="form-control" id="tanggal_expired" name="tanggal_expired" required>
             </div>
             <div class="form-group">
                 <label for="waktu">Waktu:</label>
