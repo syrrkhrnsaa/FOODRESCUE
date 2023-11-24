@@ -6,6 +6,7 @@ use App\Models\Ulasan;
 use App\Models\Mitra;
 use App\Models\Makanan;
 use DataTables;
+use Mpdf\Mpdf;
 
 class UlasanController extends Controller
 {
@@ -14,6 +15,15 @@ class UlasanController extends Controller
     public function index(Request $request)
     {
         return view('ulasan.index');
+    }
+
+    public function exportPdf()
+    {
+        $ulasanData = Ulasan::all(); // Replace with your actual query
+
+        $mpdf = new Mpdf();
+        $mpdf->WriteHTML(view('ulasan.pdf', ['ulasanData' => $ulasanData])->render());
+        $mpdf->Output('ulasan_list.pdf', 'D');
     }
 
     public function indexData()

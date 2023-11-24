@@ -10,7 +10,7 @@
         @endif
 
         <a href="{{ route('ulasan.create') }}" class="btn btn-primary mb-3">Tambah Ulasan</a>
-
+        <a href="{{ route('ulasan.exportPdf') }}" class="btn btn-warning mb-3">Export to PDF</a>
         <table class="table" id="ulasan-table">
             <thead>
                 <tr>

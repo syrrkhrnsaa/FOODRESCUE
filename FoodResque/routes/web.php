@@ -96,6 +96,7 @@ Route::delete('makanan/{id}', [MakananController::class, 'destroy'])->name('maka
 // Route untuk menampilkan halaman daftar ulasan
 Route::get('ulasan', [UlasanController::class, 'index'])->name('ulasan.index');
 Route::get('ulasan/data', [UlasanController::class, 'indexData'])->name('ulasan.data');
+Route::get('ulasan/export-pdf', [UlasanController::class, 'exportPdf'])->name('ulasan.exportPdf');
 
 // Route untuk menampilkan form tambah ulasan
 Route::get('/ulasan/create', [UlasanController::class, 'create'])->name('ulasan.create');

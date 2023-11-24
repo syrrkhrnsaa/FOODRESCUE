@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "be5f64b219743f79924a1dcad43d6a5d",
+    "content-hash": "8b0f440da938f2fe90cbf707b0df2ecf",
     "packages": [
         {
             "name": "afrizalmy/laraindo",
