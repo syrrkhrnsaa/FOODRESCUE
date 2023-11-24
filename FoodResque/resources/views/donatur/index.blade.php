@@ -3,26 +3,25 @@
 @section('content')
 
 <div class="container">
-    <h1>Daftar Donatur</h1>
-    <a href="{{ route('donatur.create') }}" class="btn btn-success">Tambah Donatur</a>
-
-    <div class="mb-3">
-    <a href="{{ route('donatur.exportPdf') }}" class="btn btn-primary" target="_blank">Export to PDF</a>
-</div>
-
-
-    <table class="table" id="donatur-table">
-        <thead>
-            <tr>
-                <th>ID</th>
-                <th>Username</th>
-                <th>Nama Donatur</th>
-                <th>Alamat</th>
-                <th>No. Telepon</th>
-                <th>Action</th>
-            </tr>
-        </thead>
-    </table>
+    <div class="row">
+        <div class="col-md-12">
+            <h1>Daftar Donatur</h1>
+            <a href="{{ route('donatur.create') }}" class="btn btn-primary mb-3">Add New Donatur</a>
+            <a href="{{ route('donatur.exportPdf') }}" class="btn btn-warning mb-3">Export to PDF</a>
+            <table class="table" id="donatur-table">
+                <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th>Username</th>
+                        <th>Nama Donatur</th>
+                        <th>Alamat</th>
+                        <th>No. Telepon</th>
+                        <th>Action</th>
+                    </tr>
+                </thead>
+            </table>
+        </div>
+    </div>
 </div>
 
 @endsection

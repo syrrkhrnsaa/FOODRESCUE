@@ -21,11 +21,11 @@ class DonaturController extends Controller
 
     return datatables()->of($donatur)
         ->addColumn('action', function ($donatur) {
-            $btn = '<a href="' . route('donatur.show', $donatur->id) . '" class="btn btn-xs btn-success">Show</a> ';
-            $btn .= '<a href="' . route('donatur.edit', $donatur->id) . '" class="btn btn-xs btn-primary">Edit</a> ';
+            $btn = '<a href="' . route('donatur.show', $donatur->id) . '" class="btn btn-sm btn-info">View</a> ';
+            $btn .= '<a href="' . route('donatur.edit', $donatur->id) . '" class="btn btn-sm btn-primary">Edit</a> ';
             $btn .= '<form action="' . route('donatur.destroy', $donatur->id) . '" method="POST" style="display:inline">
                         ' . method_field('DELETE') . csrf_field() . '
-                        <button type="submit" class="btn btn-xs btn-danger" onclick="return confirm(\'Are you sure?\')">Delete</button>
+                        <button type="submit" class="btn btn-sm btn-danger" onclick="return confirm(\'Are you sure?\')">Delete</button>
                     </form>';
 
             return $btn;
