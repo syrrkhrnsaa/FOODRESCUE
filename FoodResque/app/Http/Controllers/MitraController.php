@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Mitra;
 use Yajra\DataTables\DataTables;
+use Mpdf\Mpdf;
 
 class MitraController extends Controller
 {
@@ -29,6 +30,15 @@ class MitraController extends Controller
             })
             ->rawColumns(['action'])
             ->make(true);
+    }
+
+    public function exportPdf()
+    {
+        $mitraData = Mitra::all(); // Replace with your actual query
+
+        $mpdf = new Mpdf();
+        $mpdf->WriteHTML(view('mitra.pdf', ['mitraData' => $mitraData])->render());
+        $mpdf->Output('mitra_list.pdf', 'D');
     }
 
     public function create()
