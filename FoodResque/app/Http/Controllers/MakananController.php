@@ -48,10 +48,7 @@ class MakananController extends Controller
     // Menampilkan form untuk menambahkan makanan
     public function create()
     {
-        // Ambil data Donatur untuk dipilih pada form
-        $donaturs = Donatur::all();
-
-        return view('makanan.create', compact('donaturs'));
+        return view('makanan.create');
     }
 
     // Menyimpan makanan yang baru ditambahkan
@@ -63,8 +60,8 @@ class MakananController extends Controller
             'tanggal_expired' => 'required|date',
             'waktu' => 'required|date_format:H:i',
             'status' => 'required|string',
-            'donatur_id' => 'required|exists:donaturs,id',
-            'mitra_id' => 'nullable|exists:mitras,id', // Bisa null terlebih dahulu
+            'donatur_id' => 'required',
+            'mitra_id' => 'required',
             'foto' => 'nullable'
         ]);
 
@@ -77,14 +74,14 @@ class MakananController extends Controller
     public function show($id)
     {
         $makanan = Makanan::findOrFail($id);
-        return view('makanan.show', ['makanan' => $makanan]);
+        return view('makanan.show', compact('makanan'));
     }
 
     // Menampilkan form untuk mengedit makanan berdasarkan ID
     public function edit($id)
     {
-        $makanan = Makanan::findOrFail($id);
-        return view('makanan.edit', ['makanan' => $makanan]);
+        $makanan = Makanan::findOrFail($id); // Mengambil data makanan berdasarkan ID
+        return view('makanan.edit', compact('makanan'));
     }
 
     // Menyimpan perubahan pada makanan yang diedit
