@@ -19,12 +19,12 @@ class MitraController extends Controller
         $mitra = Mitra::select(['id', 'username', 'nama_mitra', 'alamat', 'no_telp']);
         return DataTables::of($mitra)
             ->addColumn('action', function ($mitra) {
-                $btn = '<a href="' . route('mitra.show', $mitra->id) . '" class="btn btn-success">View</a>';
-                $btn .= ' <a href="' . route('mitra.edit', $mitra->id) . '" class="btn btn-primary">Edit</a>';
+                $btn = '<a href="' . route('mitra.show', $mitra->id) . '" class="btn btn-sm btn-info">View</a>';
+                $btn .= ' <a href="' . route('mitra.edit', $mitra->id) . '" class="btn btn-sm btn-primary">Edit</a>';
                 $btn .= ' <form action="' . route('mitra.destroy', $mitra->id) . '" method="POST" style="display: inline-block;">';
                 $btn .= csrf_field();
                 $btn .= method_field('DELETE');
-                $btn .= ' <button type="submit" class="btn btn-danger" onclick="return confirm(\'Are you sure you want to delete this item?\')">Delete</button>';
+                $btn .= ' <button type="submit" class="btn btn-sm btn-danger" onclick="return confirm(\'Are you sure you want to delete this item?\')">Delete</button>';
                 $btn .= ' </form>';
                 return $btn;
             })

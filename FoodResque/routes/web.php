@@ -84,6 +84,7 @@ Route::delete('/mitra/{mitra}', [MitraController::class, 'destroy'])->name('mitr
 
 
 Route::get('makanan', [MakananController::class, 'index'])->name('makanan.index');
+Route::get('makanan/export-pdf', [MakananController::class, 'exportPdf'])->name('makanan.exportPdf');
 Route::get('makanan/getData', [MakananController::class, 'makananData'])->name('makanan.data');
 Route::get('makanan/create', [MakananController::class, 'create'])->name('makanan.create');
 Route::post('makanan/store', [MakananController::class, 'store'])->name('makanan.store');

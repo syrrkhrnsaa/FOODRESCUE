@@ -5,6 +5,7 @@ use Yajra\DataTables\DataTables;
 use App\Models\Makanan;
 use App\Models\Donatur;
 use Illuminate\Http\Request;
+use Mpdf\Mpdf;
 
 class MakananController extends Controller
 {
@@ -22,17 +23,26 @@ class MakananController extends Controller
 
         return DataTables::of($makanans)
             ->addColumn('action', function ($makanan) {
-                $btn = '<a href="' . route('makanan.show', $makanan->id) . '" class="btn btn-info">View</a>';
-                $btn .= ' <a href="' . route('makanan.edit', $makanan->id) . '" class="btn btn-primary">Edit</a>';
+                $btn = '<a href="' . route('makanan.show', $makanan->id) . '" class="btn btn-sm btn-info">View</a>';
+                $btn .= ' <a href="' . route('makanan.edit', $makanan->id) . '" class="btn btn-sm btn-primary">Edit</a>';
                 $btn .= ' <form action="' . route('makanan.destroy', $makanan->id) . '" method="POST" style="display: inline-block;">';
                 $btn .= csrf_field();
                 $btn .= method_field('DELETE');
-                $btn .= ' <button type="submit" class="btn btn-danger" onclick="return confirm(\'Are you sure you want to delete this item?\')">Delete</button>';
+                $btn .= ' <button type="submit" class="btn btn-sm btn-danger" onclick="return confirm(\'Are you sure you want to delete this item?\')">Delete</button>';
                 $btn .= ' </form>';
                 return $btn;
             })
             ->rawColumns(['action'])
             ->make(true);
+    }
+
+    public function exportPdf()
+    {
+        $makananData = Makanan::all(); // Replace with your actual query
+
+        $mpdf = new Mpdf();
+        $mpdf->WriteHTML(view('makanan.pdf', ['makananData' => $makananData])->render());
+        $mpdf->Output('makanan_list.pdf', 'D');
     }
 
     // Menampilkan form untuk menambahkan makanan

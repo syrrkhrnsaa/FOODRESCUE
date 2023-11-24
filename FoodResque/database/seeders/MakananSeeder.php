@@ -18,7 +18,7 @@ class MakananSeeder extends Seeder
         Makanan::truncate();
 
         // Seed the table with 1000 data entries
-        for ($i = 1; $i <= 1000; $i++) {
+        for ($i = 1; $i <= 500; $i++) {
             $donatur = Donatur::inRandomOrder()->first();
             $mitra = Mitra::inRandomOrder()->first();
 

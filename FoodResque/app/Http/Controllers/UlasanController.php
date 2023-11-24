@@ -20,7 +20,6 @@ class UlasanController extends Controller
     public function exportPdf()
     {
         $ulasanData = Ulasan::all(); // Replace with your actual query
-
         $mpdf = new Mpdf();
         $mpdf->WriteHTML(view('ulasan.pdf', ['ulasanData' => $ulasanData])->render());
         $mpdf->Output('ulasan_list.pdf', 'D');

@@ -18,7 +18,7 @@
     </style>
 </head>
 <body>
-    <h2>Data Mitra</h2>
+    <h2>Data Ulasan</h2>
     <table>
         <thead>
             <tr>
@@ -26,7 +26,6 @@
                 <th>Mitra</th>
                 <th>Makanan</th>
                 <th>Isi Ulasan</th>
-                <th>Aksi</th>
             </tr>
         </thead>
         <tbody>
@@ -34,10 +33,8 @@
                 <tr>
                     <td>{{ $ulasan->id }}</td>
                     <td>{{ $ulasan->mitra->username }}</td>
-                    <td>{{ $ulasan->makanan->nama_makanan }}</td>
+                    <td>{{ $ulasan->makanan->nama_menu }}</td>
                     <td>{{ $ulasan->isi_ulasan }}</td>
-                    <!-- Tambahkan kolom-kolom lain jika diperlukan -->
-                    <td><!-- Tambahkan aksi jika diperlukan --></td>
                 </tr>
             @endforeach
         </tbody>
