@@ -7,6 +7,17 @@
         <div class="row">
             <div class="col-md-12">
                 <h1>Daftar Mitra</h1>
+                @if(session('success'))
+                    <div class="alert alert-success" id="successMessage">
+                        {{ session('success') }}
+                    </div>
+                    <script>
+                        // Menghilangkan pesan sukses setelah 5 detik
+                        setTimeout(function() {
+                            document.getElementById('successMessage').style.display = 'none';
+                        }, 1900); // Ubah angka 5000 menjadi jumlah milidetik yang diinginkan
+                    </script>
+                @endif
                 <a href="{{ route('mitra.create') }}" class="btn btn-primary mb-3">Add New Mitra</a>
                 <a href="{{ route('mitra.exportPdf') }}" class="btn btn-warning mb-3">Export to PDF</a>
                 <table class="table" id="mitra-table">

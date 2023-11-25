@@ -27,14 +27,17 @@ class UlasanController extends Controller
 
     public function indexData()
     {
-        $data = Ulasan::latest()->get();
-        return DataTables::of($data)
-            ->addColumn('action', function ($row) {
-                // You can add action buttons here if needed
-                return '<button class="btn btn-sm btn-danger">Delete</button>';
+        $ulasan = Ulasan::select(['id', 'mitra_id', 'makanan_id', 'isi_ulasan']);
+        return DataTables::of($ulasan)
+            ->addColumn('action', function ($ulasan) {
+                $btn = '<form action="' . route('ulasan.destroy', $ulasan->id) . '" method="POST" style="display:inline">
+                    ' . method_field('DELETE') . csrf_field() . '
+                    <button type="submit" class="btn btn-sm btn-danger" onclick="return confirm(\'Are you sure want to delete?\')">Delete</button>
+                </form>';
+                return $btn;
             })
             ->rawColumns(['action'])
-            ->make(true);
+            ->make(true); 
     }
 
     public function create()
