@@ -12,10 +12,9 @@
                         {{ session('success') }}
                     </div>
                     <script>
-                        // Menghilangkan pesan sukses setelah 5 detik
                         setTimeout(function() {
                             document.getElementById('successMessage').style.display = 'none';
-                        }, 1900); // Ubah angka 5000 menjadi jumlah milidetik yang diinginkan
+                        }, 1900);
                     </script>
                 @endif
                 <a href="{{ route('mitra.create') }}" class="btn btn-primary mb-3">Add New Mitra</a>
