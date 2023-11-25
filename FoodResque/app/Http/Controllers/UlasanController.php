@@ -25,20 +25,29 @@ class UlasanController extends Controller
         $mpdf->Output('ulasan_list.pdf', 'D');
     }
 
-    public function indexData()
+    public function ulasanData()
     {
-        $ulasan = Ulasan::select(['id', 'mitra_id', 'makanan_id', 'isi_ulasan']);
+        $ulasan = Ulasan::with('mitra', 'makanan')->select(['id', 'mitra_id', 'makanan_id', 'isi_ulasan']);
         return DataTables::of($ulasan)
+            ->addColumn('mitra', function ($ulasan) {
+                return $ulasan->mitra->nama_mitra;
+            })
+            ->addColumn('makanan', function ($ulasan) {
+                return $ulasan->makanan->id;
+            })
             ->addColumn('action', function ($ulasan) {
-                $btn = '<form action="' . route('ulasan.destroy', $ulasan->id) . '" method="POST" style="display:inline">
-                    ' . method_field('DELETE') . csrf_field() . '
-                    <button type="submit" class="btn btn-sm btn-danger" onclick="return confirm(\'Are you sure want to delete?\')">Delete</button>
-                </form>';
+                $btn = '<a href="' . route('ulasan.show', $ulasan->id) . '" class="btn btn-sm btn-info">View</a>';
+                $btn .= ' <a href="' . route('ulasan.edit', $ulasan->id) . '" class="btn btn-sm btn-primary">Edit</a>';
+                $btn .= '<form action="' . route('ulasan.destroy', $ulasan->id) . '" method="POST" style="display:inline">
+                        ' . method_field('DELETE') . csrf_field() . '
+                        <button type="submit" class="btn btn-sm btn-danger" onclick="return confirm(\'Are you sure want to delete?\')">Delete</button>
+                    </form>';
                 return $btn;
             })
             ->rawColumns(['action'])
             ->make(true); 
     }
+
 
     public function create()
     {
@@ -82,21 +91,36 @@ class UlasanController extends Controller
 
     public function edit($id)
     {
-        $ulasan = Ulasan::findOrFail($id);
-        return view('ulasan.edit', compact('ulasan'));
+        $ulasan = Ulasan::with('mitra', 'makanan')->findOrFail($id);
+        $mitras = Mitra::all();
+        $makanans = Makanan::all();
+        return view('ulasan.edit', compact('ulasan', 'mitras', 'makanans'));
     }
+
 
     public function update(Request $request, $id)
     {
+        // Validasi data
+        $request->validate([
+            'mitra_id' => 'required',
+            'makanan_id' => 'required',
+            'isi_ulasan' => 'required',
+        ]);
+
+        // Temukan ulasan berdasarkan ID
         $ulasan = Ulasan::findOrFail($id);
+
+        // Perbarui data ulasan
         $ulasan->update([
             'mitra_id' => $request->mitra_id,
             'makanan_id' => $request->makanan_id,
             'isi_ulasan' => $request->isi_ulasan,
         ]);
 
-        return redirect()->route('ulasan.index')->with('success', 'Ulasan updated successfully');
+        // Redirect ke halaman index dengan pesan sukses
+        return redirect()->route('ulasan.index')->with('success', 'Ulasan berhasil diperbarui');
     }
+
 
     public function destroy($id)
     {

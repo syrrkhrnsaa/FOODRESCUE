@@ -1,4 +1,5 @@
 @extends('layouts.base_admin.base_dashboard')
+<title>@yield('judul') Edit Ulasan</title>
 
 @section('content')
     <div class="container">
@@ -23,7 +24,7 @@
                 <select class="form-control" id="mitra_id" name="mitra_id">
                     <!-- Populate this dropdown with Mitra options -->
                     @foreach ($mitras as $mitra)
-                        <option value="{{ $mitra->id }}" @if ($ulasan->mitra_id == $mitra->id) selected @endif>{{ $mitra->name }}</option>
+                        <option value="{{ $mitra->nama_mitra }}" @if ($ulasan->mitra->nama_mitra == $mitra->nama_mitra) selected @endif>{{ $mitra->nama_mitra }}</option>
                     @endforeach
                 </select>
             </div>
@@ -33,7 +34,7 @@
                 <select class="form-control" id="makanan_id" name="makanan_id">
                     <!-- Populate this dropdown with Makanan options -->
                     @foreach ($makanans as $makanan)
-                        <option value="{{ $makanan->id }}" @if ($ulasan->makanan_id == $makanan->id) selected @endif>{{ $makanan->name }}</option>
+                        <option value="{{ $makanan->nama_makanan }}" @if ($ulasan->makanan->nama_makanan == $makanan->nama_makanan) selected @endif>{{ $makanan->nama_makanan }}</option>
                     @endforeach
                 </select>
             </div>

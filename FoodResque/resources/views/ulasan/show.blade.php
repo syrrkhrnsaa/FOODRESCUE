@@ -1,4 +1,5 @@
 @extends('layouts.base_admin.base_dashboard')
+<title>@yield('judul') View Ulasan</title>
 
 @section('content')
     <div class="container">

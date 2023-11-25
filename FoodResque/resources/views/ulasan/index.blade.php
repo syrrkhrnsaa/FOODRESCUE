@@ -1,3 +1,4 @@
+<!-- resources/views/ulasan/index.blade.php -->
 @extends('layouts.base_admin.base_dashboard')
 
 @section('content')
@@ -18,7 +19,7 @@
                     <th>Mitra</th>
                     <th>Makanan</th>
                     <th>Isi Ulasan</th>
-                    <th>Aksi</th>
+                    <th>Action</th>
                 </tr>
             </thead>
         </table>
@@ -26,20 +27,20 @@
 
     @push('scripts')
     <script>
-    $(function() {
-        $('#ulasan-table').DataTable({
-            processing: true,
-            serverSide: true,
-            ajax: '{{ route('ulasan.data') }}',
-            columns: [
-                { data: 'id', name: 'id' },
-                { data: 'mitra_id', name: 'mitra_id' },
-                { data: 'makanan_id', name: 'makanan_id' },
-                { data: 'isi_ulasan', name: 'isi_ulasan' },
-                { data: 'action', name: 'action', orderable: false, searchable: false },
-            ]
+        $(function() {
+            $('#ulasan-table').DataTable({
+                processing: true,
+                serverSide: true,
+                ajax: '{{ route('ulasan.data') }}',
+                columns: [
+                    { data: 'id', name: 'id' },
+                    { data: 'mitra', name: 'mitra.nama_mitra' },
+                    { data: 'makanan', name: 'makanan.nama_makanan' },
+                    { data: 'isi_ulasan', name: 'isi_ulasan' },
+                    { data: 'action', name: 'action', orderable: false, searchable: false },
+                ]
+            });
         });
-    });
-</script>
+    </script>
     @endpush
 @endsection
