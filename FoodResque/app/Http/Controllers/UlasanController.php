@@ -93,33 +93,31 @@ class UlasanController extends Controller
     {
         $ulasan = Ulasan::with('mitra', 'makanan')->findOrFail($id);
         $mitras = Mitra::all();
-        $makanans = Makanan::all();
+        $makanans = Makanan::get();
         return view('ulasan.edit', compact('ulasan', 'mitras', 'makanans'));
     }
 
 
     public function update(Request $request, $id)
     {
-        // Validasi data
         $request->validate([
             'mitra_id' => 'required',
             'makanan_id' => 'required',
             'isi_ulasan' => 'required',
         ]);
 
-        // Temukan ulasan berdasarkan ID
         $ulasan = Ulasan::findOrFail($id);
 
-        // Perbarui data ulasan
         $ulasan->update([
             'mitra_id' => $request->mitra_id,
             'makanan_id' => $request->makanan_id,
             'isi_ulasan' => $request->isi_ulasan,
+            // ... other fields
         ]);
 
-        // Redirect ke halaman index dengan pesan sukses
-        return redirect()->route('ulasan.index')->with('success', 'Ulasan berhasil diperbarui');
+        return redirect()->route('ulasan.index')->with('success', 'Ulasan berhasil diperbarui.');
     }
+
 
 
     public function destroy($id)

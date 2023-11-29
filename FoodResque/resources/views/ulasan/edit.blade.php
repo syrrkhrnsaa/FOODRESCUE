@@ -24,7 +24,7 @@
                 <select class="form-control" id="mitra_id" name="mitra_id">
                     <!-- Populate this dropdown with Mitra options -->
                     @foreach ($mitras as $mitra)
-                        <option value="{{ $mitra->nama_mitra }}" @if ($ulasan->mitra->nama_mitra == $mitra->nama_mitra) selected @endif>{{ $mitra->nama_mitra }}</option>
+                        <option value="{{ $mitra->id }}" @if ($ulasan->mitra->id == $mitra->id) selected @endif>{{ $mitra->nama_mitra }}</option>
                     @endforeach
                 </select>
             </div>
@@ -34,9 +34,10 @@
                 <select class="form-control" id="makanan_id" name="makanan_id">
                     <!-- Populate this dropdown with Makanan options -->
                     @foreach ($makanans as $makanan)
-                        <option value="{{ $makanan->nama_makanan }}" @if ($ulasan->makanan->nama_makanan == $makanan->nama_makanan) selected @endif>{{ $makanan->nama_makanan }}</option>
+                        <option value="{{ $makanan->id }}" >{{ $makanan->id }}</option>
                     @endforeach
                 </select>
+                
             </div>
 
             <div class="form-group">
