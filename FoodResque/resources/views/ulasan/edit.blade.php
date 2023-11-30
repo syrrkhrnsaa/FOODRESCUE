@@ -34,7 +34,7 @@
                 <select class="form-control" id="makanan_id" name="makanan_id">
                     <!-- Populate this dropdown with Makanan options -->
                     @foreach ($makanans as $makanan)
-                        <option value="{{ $makanan->id }}" >{{ $makanan->id }}</option>
+                        <option value="{{ $makanan->id }}" >{{ $makanan->nama_menu }}</option>
                     @endforeach
                 </select>
                 
