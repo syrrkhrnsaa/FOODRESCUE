@@ -44,12 +44,22 @@
                                 <input type="text" class="form-control" id="status" name="status" value="{{ $makanan->status }}" required>
                             </div>
                             <div class="form-group">
-                                <label for="donatur_id">ID Donatur:</label>
-                                <input type="text" class="form-control" id="donatur_id" name="donatur_id" value="{{ $makanan->donatur_id }}" required>
+                                <label for="donatur_id">Donatur:</label>
+                                <select class="form-control" id="donatur_id" name="donatur_id">
+                                    <!-- Populate this dropdown with Mitra options -->
+                                    @foreach ($donatur as $donaturs)
+                                        <option value="{{ $donaturs->id }}" @if ($makanan->donatur->id == $donaturs->id) selected @endif>{{ $donaturs->nama_donatur }}</option>
+                                    @endforeach
+                                </select>
                             </div>
                             <div class="form-group">
-                                <label for="mitra_id">ID Mitra:</label>
-                                <input type="text" class="form-control" id="mitra_id" name="mitra_id" value="{{ $makanan->mitra_id }}" required>
+                                <label for="mitra_id">Mitra:</label>
+                                <select class="form-control" id="mitra_id" name="mitra_id">
+                                    <!-- Populate this dropdown with Mitra options -->
+                                    @foreach ($mitras as $mitra)
+                                        <option value="{{ $mitra->id }}" @if ($makanan->mitra->id == $mitra->id) selected @endif>{{ $mitra->nama_mitra }}</option>
+                                    @endforeach
+                                </select>
                             </div>
                             <div class="form-group">
                                 <label for="foto">Foto:</label>

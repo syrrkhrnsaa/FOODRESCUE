@@ -1,9 +1,9 @@
 @extends('layouts.base_admin.base_dashboard')
 @section('content')
     <div class="container">
-        <div class="col-md-12">
-            <h2>Data Makanan</h2>
-            <a href="{{ route('makanan.create') }}" class="btn btn-primary mb-3">Tambah Makanan</a>
+        <div class="col-md-10">
+            <h2>Data Sumbangan</h2>
+            <a href="{{ route('makanan.create') }}" class="btn btn-primary mb-3">Tambah Sumbangan</a>
             <a href="{{ route('makanan.exportPdf') }}" class="btn btn-warning mb-3">Export to PDF</a>
             <table class="table" id="makanan-table">
                 <thead>

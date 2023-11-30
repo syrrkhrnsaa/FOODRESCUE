@@ -19,6 +19,7 @@
                             @csrf
                             @method('DELETE')
                             <button type="submit" class="btn btn-danger" onclick="return confirm('Are you sure you want to delete this item?')">Delete</button>
+                            <a href="{{ route('mitra.index') }}" class="btn btn-secondary">Kembali</a>
                         </form>
                     </div>
                 </div>

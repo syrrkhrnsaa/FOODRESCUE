@@ -44,12 +44,26 @@
                                 <input type="text" class="form-control" id="status" name="status" required>
                             </div>
                             <div class="form-group">
-                                <label for="donatur_id">ID Donatur:</label>
-                                <input type="text" class="form-control" id="donatur_id" name="donatur_id" required>
+                                <label for="donatur_id">Donatur:</label>
+                                <select class="form-control" id="donatur_id" name="donatur_id">
+                                    <!-- Populate this dropdown with Mitra options -->
+                                    @foreach ($donatur as $donaturs)
+                                        <option value="{{ $donaturs->id }}" {{ old('nama_donatur') == $donaturs->nama_donatur ? 'selected' : '' }}>
+                                            {{ $donaturs->nama_donatur }}
+                                        </option>
+                                    @endforeach
+                                </select>
                             </div>
                             <div class="form-group">
-                                <label for="mitra_id">ID Mitra:</label>
-                                <input type="text" class="form-control" id="mitra_id" name="mitra_id" required>
+                                <label for="mitra_id">Mitra:</label>
+                                <select class="form-control" id="mitra_id" name="mitra_id">
+                                    <!-- Populate this dropdown with Mitra options -->
+                                    @foreach ($mitras as $mitra)
+                                        <option value="{{ $mitra->id }}" {{ old('nama_mitra') == $mitra->nama_mitra ? 'selected' : '' }}>
+                                            {{ $mitra->nama_mitra }}
+                                        </option>
+                                    @endforeach
+                                </select>
                             </div>
                             <div class="form-group">
                                 <label for="foto">Foto:</label>

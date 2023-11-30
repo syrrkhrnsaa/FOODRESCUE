@@ -33,7 +33,7 @@ class UlasanController extends Controller
                 return $ulasan->mitra->nama_mitra;
             })
             ->addColumn('makanan', function ($ulasan) {
-                return $ulasan->makanan->id;
+                return $ulasan->makanan->nama_menu;
             })
             ->addColumn('action', function ($ulasan) {
                 $btn = '<a href="' . route('ulasan.show', $ulasan->id) . '" class="btn btn-sm btn-info">View</a>';
@@ -51,8 +51,8 @@ class UlasanController extends Controller
 
     public function create()
     {
-        $mitras = Mitra::all(['id']);
-        $makanans = Makanan::all(['id']);
+        $mitras = Mitra::all(['nama_mitra']);
+        $makanans = Makanan::all(['nama_menu']);
 
         return view('ulasan.create', [
             'mitras' => $mitras,
@@ -74,8 +74,8 @@ class UlasanController extends Controller
 
         // Tambahkan data ulasan ke database
         Ulasan::create([
-            'mitra_id' => $request->mitra_id,
-            'makanan_id' => $request->makanan_id,
+            'mitra_id' => $request->nama_mitra,
+            'makanan_id' => $request->nama_menu,
             'isi_ulasan' => $request->isi_ulasan,
         ]);
 

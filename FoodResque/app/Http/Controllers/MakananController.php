@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 use Yajra\DataTables\DataTables;
 use App\Models\Makanan;
 use App\Models\Donatur;
+use App\Models\Mitra;
 use Illuminate\Http\Request;
 use Mpdf\Mpdf;
 
@@ -48,7 +49,13 @@ class MakananController extends Controller
     // Menampilkan form untuk menambahkan makanan
     public function create()
     {
-        return view('makanan.create');
+        $mitras = Mitra::all(['nama_mitra']);
+        $donatur= Donatur::all(['nama_donatur']);
+
+        return view('makanan.create', [
+            'mitras' => $mitras,
+            'donatur' => $donatur,
+        ]);
     }
 
     // Menyimpan makanan yang baru ditambahkan
@@ -81,7 +88,9 @@ class MakananController extends Controller
     public function edit($id)
     {
         $makanan = Makanan::findOrFail($id); // Mengambil data makanan berdasarkan ID
-        return view('makanan.edit', compact('makanan'));
+        $donatur = donatur::all();
+        $mitras = Mitra::all();
+        return view('makanan.edit', compact('makanan', 'donatur', 'mitras'));
     }
 
     // Menyimpan perubahan pada makanan yang diedit

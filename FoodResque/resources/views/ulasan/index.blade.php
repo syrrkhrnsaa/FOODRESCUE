@@ -35,7 +35,7 @@
                 columns: [
                     { data: 'id', name: 'id' },
                     { data: 'mitra', name: 'mitra.nama_mitra' },
-                    { data: 'makanan', name: 'makanan.nama_makanan' },
+                    { data: 'makanan', name: 'makanan.nama_menu' },
                     { data: 'isi_ulasan', name: 'isi_ulasan' },
                     { data: 'action', name: 'action', orderable: false, searchable: false },
                 ]

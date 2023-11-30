@@ -7,6 +7,7 @@ use App\Models\Mitra;
 use Yajra\DataTables\DataTables;
 use Mpdf\Mpdf;
 
+
 class MitraController extends Controller
 {
     public function index()
@@ -88,9 +89,17 @@ class MitraController extends Controller
 
     public function destroy($id)
     {
-        $mitra = Mitra::findOrFail($id);
-        $mitra->delete();
+        try {
+            $mitra = Mitra::findOrFail($id);
+            $mitra->delete();
 
-        return redirect()->route('mitra.index')->with('success', 'Mitra deleted successfully');
+            return redirect()->route('mitra.index')->with('success', 'Mitra deleted successfully');
+        } catch (ModelNotFoundException $e) {
+            return redirect()->route('mitra.index')->with('error', 'Mitra not found.');
+        } catch (QueryException $e) {
+            return redirect()->route('mitra.index')->with('error', 'Query exception: ' . $e->getMessage());
+        } catch (Exception $e) {
+            return redirect()->route('mitra.index')->with('error', 'Terjadi kesalahan: ' . $e->getMessage());
+        }
     }
 }

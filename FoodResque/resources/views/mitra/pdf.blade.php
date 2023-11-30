@@ -26,7 +26,7 @@
                 <th>Username</th>
                 <th>Nama Mitra</th>
                 <th>Alamat</th>
-                <th>No. Telepon</th>
+                <th>No. Telp</th>
                 <!-- Tambahkan kolom-kolom lain jika diperlukan -->
             </tr>
         </thead>
