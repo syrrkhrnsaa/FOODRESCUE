@@ -2,27 +2,27 @@
 
 @section('content')
 
-<div class="container">
+<div class="container mx-3 my-4">
     <h1>Daftar Donatur</h1>
     <a href="{{ route('donatur.create') }}" class="btn btn-success">Tambah Donatur</a>
-
-    <div class="mb-3">
     <a href="{{ route('donatur.exportPdf') }}" class="btn btn-primary" target="_blank">Export to PDF</a>
 </div>
 
 
-    <table class="table" id="donatur-table">
-        <thead>
-            <tr>
-                <th>ID</th>
-                <th>Username</th>
-                <th>Nama Donatur</th>
-                <th>Alamat</th>
-                <th>No. Telepon</th>
-                <th>Action</th>
-            </tr>
-        </thead>
-    </table>
+<table class="table" id="donatur-table">
+    <thead>
+        <tr>
+            <th class="px-9">ID</th>
+            <th class="px-9">Username</th>
+            <th class="px-9">Nama Donatur</th>
+            <th class="px-9">Alamat</th>
+            <th class="px-9">No. Telepon</th>
+            <th class="px-9">Action</th>
+        </tr>
+    </thead>
+    <!-- Your table body goes here -->
+</table>
+
 </div>
 
 @endsection
