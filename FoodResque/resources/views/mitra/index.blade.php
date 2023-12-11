@@ -17,6 +17,17 @@
                         }, 1900);
                     </script>
                 @endif
+                @if(session('error'))
+                    <div class="alert alert-danger" id="errorMessage">
+                        {{ session('error') }}
+                    </div>
+                    <script>
+                        setTimeout(function() {
+                            document.getElementById('errorMessage').style.display = 'none';
+                        }, 3000); // Menyembunyikan pesan setelah 3 detik
+                    </script>
+                @endif
+
                 <a href="{{ route('mitra.create') }}" class="btn btn-primary mb-3">Add New Mitra</a>
                 <a href="{{ route('mitra.exportPdf') }}" class="btn btn-warning mb-3">Export to PDF</a>
                 <table class="table" id="mitra-table">
@@ -50,36 +61,6 @@
                     { data: 'no_telp', name: 'no_telp' },
                     { data: 'action', name: 'action', orderable: false, searchable: false }
                 ],
-            });
-
-            $('#mitra-table').on('click', '.hapusData', function () {
-                var id = $(this).data("id");
-                var url = $(this).data("url");
-                Swal.fire({
-                    title: 'Apa kamu yakin?',
-                    text: "Kamu tidak akan dapat mengembalikan ini!",
-                    icon: 'warning',
-                    showCancelButton: true,
-                    confirmButtonColor: '#3085d6',
-                    cancelButtonColor: '#d33',
-                    confirmButtonText: 'Ya, hapus!',
-                    cancelButtonText: 'Batal'
-                }).then((result) => {
-                    if (result.isConfirmed) {
-                        $.ajax({
-                            url: url,
-                            type: 'DELETE',
-                            data: {
-                                "id": id,
-                                "_token": "{{ csrf_token() }}"
-                            },
-                            success: function (response) {
-                                Swal.fire('Terhapus!', response.msg, 'success');
-                                $('#mitra-table').DataTable().ajax.reload();
-                            }
-                        });
-                    }
-                });
             });
         });
     </script>

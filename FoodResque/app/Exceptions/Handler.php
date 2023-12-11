@@ -4,9 +4,39 @@ namespace App\Exceptions;
 
 use Illuminate\Foundation\Exceptions\Handler as ExceptionHandler;
 use Throwable;
+use Exception;
+use Illuminate\Support\Facades\Log;
+use Illuminate\Auth\AuthenticationException;
+use Illuminate\Database\Eloquent\ModelNotFoundException;
+use Illuminate\Validation\ValidationException;
+use Symfony\Component\HttpKernel\Exception\HttpException;
+use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
 
 class Handler extends ExceptionHandler
 {
+    public function report(Throwable $exception)
+    {
+        if ($exception instanceof ValidationException) {
+            Log::error('Validation error: ' . $exception->getMessage());
+        } elseif ($exception instanceof ModelNotFoundException) {
+            Log::error('Model not found: ' . $exception->getMessage());
+        } elseif ($exception instanceof AuthenticationException) {
+            Log::error('Authentication error: ' . $exception->getMessage());
+        } elseif ($exception instanceof NotFoundHttpException) {
+            Log::error('Route not found: ' . $exception->getMessage());
+        } elseif ($exception instanceof HttpException) {
+            Log::error('HTTP error: ' . $exception->getMessage());
+        } else {
+            Log::error('Error: ' . $exception->getMessage());
+        }
+
+        parent::report($exception);
+    }
+
+    public function render($request, Throwable $exception)
+    {
+        return parent::render($request, $exception);
+    }
     /**
      * A list of exception types with their corresponding custom log levels.
      *
