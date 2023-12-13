@@ -46,25 +46,25 @@
                             <div class="form-group">
                                 <label for="donatur_id">Donatur:</label>
                                 <select class="form-control" id="donatur_id" name="donatur_id">
-                                    <!-- Populate this dropdown with Mitra options -->
-                                    @foreach ($donatur as $donaturs)
-                                        <option value="{{ $donaturs->id }}" {{ old('nama_donatur') == $donaturs->nama_donatur ? 'selected' : '' }}>
-                                            {{ $donaturs->nama_donatur }}
+                                    @foreach ($donaturs as $donatur)
+                                        <option value="{{ $donatur->id }}" {{ old('donatur_id') == $donatur->id ? 'selected' : '' }}>
+                                            {{ $donatur->nama_donatur }}
                                         </option>
                                     @endforeach
                                 </select>
                             </div>
+                            
                             <div class="form-group">
                                 <label for="mitra_id">Mitra:</label>
                                 <select class="form-control" id="mitra_id" name="mitra_id">
-                                    <!-- Populate this dropdown with Mitra options -->
                                     @foreach ($mitras as $mitra)
-                                        <option value="{{ $mitra->id }}" {{ old('nama_mitra') == $mitra->nama_mitra ? 'selected' : '' }}>
+                                        <option value="{{ $mitra->id }}" {{ old('mitra_id') == $mitra->id ? 'selected' : '' }}>
                                             {{ $mitra->nama_mitra }}
                                         </option>
                                     @endforeach
                                 </select>
                             </div>
+                            
                             <div class="form-group">
                                 <label for="foto">Foto:</label>
                                 <input type="file" class="form-control" id="foto" name="foto">

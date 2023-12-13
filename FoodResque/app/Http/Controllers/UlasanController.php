@@ -5,7 +5,7 @@ use Illuminate\Http\Request;
 use App\Models\Ulasan;
 use App\Models\Mitra;
 use App\Models\Makanan;
-use DataTables;
+use Yajra\DataTables\DataTables;
 use Mpdf\Mpdf;
 
 class UlasanController extends Controller
