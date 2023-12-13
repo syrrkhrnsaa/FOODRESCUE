@@ -7,6 +7,16 @@
         <div class="row">
             <div class="col-md-12">
                 <h1>Edit Mitra</h1>
+                @if(session('error'))
+                    <div class="alert alert-danger" id="errorMessage">
+                        {{ session('error') }}
+                    </div>
+                    <script>
+                        setTimeout(function() {
+                            document.getElementById('errorMessage').style.display = 'none';
+                        }, 3000); // Menyembunyikan pesan setelah 3 detik
+                    </script>
+                @endif
                 <form action="{{ route('mitra.update', $mitra->id) }}" method="POST">
                     @csrf
                     @method('PUT')

@@ -22,8 +22,8 @@
                 <select class="form-control" id="mitra_id" name="mitra_id">
                     <!-- Populate this dropdown with Mitra options -->
                     @foreach ($mitras as $mitra)
-                        <option value="{{ $mitra->id }}" {{ old('mitra_id') == $mitra->id ? 'selected' : '' }}>
-                            {{ $mitra->id }}
+                        <option value="{{ $mitra->id }}" {{ old('nama_mitra') == $mitra->nama_mitra ? 'selected' : '' }}>
+                            {{ $mitra->nama_mitra }}
                         </option>
                     @endforeach
                 </select>
@@ -34,8 +34,8 @@
                 <select class="form-control" id="makanan_id" name="makanan_id">
                     <!-- Populate this dropdown with Makanan options -->
                     @foreach ($makanans as $makanan)
-                        <option value="{{ $makanan->id }}" {{ old('makanan_id') == $makanan->id ? 'selected' : '' }}>
-                            {{ $makanan->id }}
+                        <option value="{{ $makanan->id }}" {{ old('nama_menu') == $makanan->nama_menu ? 'selected' : '' }}>
+                            {{ $makanan->nama_menu }}
                         </option>
                     @endforeach
                 </select>

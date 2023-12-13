@@ -32,7 +32,7 @@ $links = [
                 "section_href" => route('mitra.index')
             ],
             [
-                "section_text" => "Makanan",
+                "section_text" => "Sumbangan",
                 "section_icon" => "far fa-circle",
                 "section_href" => route('makanan.index')
             ],

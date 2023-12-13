@@ -1,23 +1,26 @@
 @extends('layouts.base_admin.base_dashboard')
 @section('content')
     <div class="container">
-        <h2>Data Makanan</h2>
-        <a href="{{ route('makanan.create') }}" class="btn btn-success mb-2">Tambah Makanan</a>
-        <table class="table" id="makanan-table">
-            <thead>
-                <tr>
-                    <th>No</th>
-                    <th>Nama Menu</th>
-                    <th>Jumlah Makanan</th>
-                    <th>Tanggal Expired</th>
-                    <th>Waktu</th>
-                    <th>Status</th>
-                    <th>Donatur</th>
-                    <th>Mitra</th>
-                    <th>Action</th>
-                </tr>
-            </thead>
-        </table>
+        <div class="col-md-10">
+            <h2>Data Sumbangan</h2>
+            <a href="{{ route('makanan.create') }}" class="btn btn-primary mb-3">Tambah Sumbangan</a>
+            <a href="{{ route('makanan.exportPdf') }}" class="btn btn-warning mb-3">Export to PDF</a>
+            <table class="table" id="makanan-table">
+                <thead>
+                    <tr>
+                        <th>No</th>
+                        <th>Nama Menu</th>
+                        <th>Jumlah Makanan</th>
+                        <th>Tanggal Expired</th>
+                        <th>Waktu</th>
+                        <th>Status</th>
+                        <th>Donatur</th>
+                        <th>Mitra</th>
+                        <th>Action</th>
+                    </tr>
+                </thead>
+            </table>
+        </div>
     </div>
 
     @push('scripts')
