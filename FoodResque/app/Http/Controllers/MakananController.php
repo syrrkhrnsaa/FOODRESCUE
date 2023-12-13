@@ -7,6 +7,7 @@ use App\Models\Donatur;
 use App\Models\Mitra;
 use Illuminate\Http\Request;
 use Mpdf\Mpdf;
+use Illuminate\Support\Facades\Log;
 
 class MakananController extends Controller
 {
@@ -49,34 +50,44 @@ class MakananController extends Controller
     // Menampilkan form untuk menambahkan makanan
     public function create()
     {
-        $mitras = Mitra::all(['nama_mitra']);
-        $donatur= Donatur::all(['nama_donatur']);
+        $mitras = Mitra::all(['id', 'nama_mitra']);
+        $donaturs = Donatur::all(['id', 'nama_donatur']);
 
         return view('makanan.create', [
             'mitras' => $mitras,
-            'donatur' => $donatur,
+            'donaturs' => $donaturs,
         ]);
     }
 
     // Menyimpan makanan yang baru ditambahkan
     public function store(Request $request)
     {
-        $validatedData = $request->validate([
-            'nama_menu' => 'required|string',
-            'jumlah_makanan' => 'required|integer',
-            'tanggal_expired' => 'required|date',
-            'waktu' => 'required|date_format:H:i:s',
-            'status' => 'required|string',
-            'donatur_id' => 'required',
-            'mitra_id' => 'required',
-            'foto' => 'nullable'
-        ]);
+        //dd($request->all());
+        try {
+            $validatedData = $request->validate([
+                'nama_menu' => 'required|string',
+                'jumlah_makanan' => 'required|integer',
+                'tanggal_expired' => 'required|date',
+                'waktu' => 'required|date_format:H:i',
+                'status' => 'required|string',
+                'donatur_id' => 'required|exists:donatur,id',
+                'mitra_id' => 'required|exists:mitra,id',
+                'foto' => 'nullable'
+            ]);
+    
+            Makanan::create($validatedData);
+    
+            return redirect()->route('makanan.index')->with('success', 'Makanan created successfully.');
+        } catch (\Exception $e) {
+            //dd($e->getMessage());
 
-        Makanan::create($validatedData);
-
-        return redirect()->route('makanan.index')->with('success', 'Makanan created successfully.');
+            // Log the error
+            Log::error('Error creating makanan: ' . $e->getMessage());
+    
+            return redirect()->route('makanan.index')->with('error', 'Failed to create makanan');
+        }
     }
-
+    
     // Menampilkan detail makanan berdasarkan ID
     public function show($id)
     {
@@ -95,34 +106,47 @@ class MakananController extends Controller
 
     // Menyimpan perubahan pada makanan yang diedit
     public function update(Request $request, $id)
-    {
-        // Validasi input, sesuaikan aturan validasi sesuai kebutuhan Anda
+{
+    //dd($request->all());
+    try {
         $request->validate([
             'nama_menu' => 'required|string',
             'jumlah_makanan' => 'required|integer',
             'tanggal_expired' => 'required|date',
-            'waktu' => 'required|date_format:H:i:s',
+            'waktu' => 'required|date_format:H:i',
             'status' => 'required|string',
             'donatur_id' => 'required|exists:donatur,id',
             'mitra_id' => 'required|exists:mitra,id',
-            'foto' => 'nullable'
+            'foto' => 'nullable',
         ]);
 
-        // Update data makanan berdasarkan ID
         $makanan = Makanan::findOrFail($id);
         $makanan->update($request->all());
 
-        // Redirect dengan pesan sukses
-        return redirect()->route('makanan.index')->with('success', 'Makanan berhasil diperbarui!');
+        return redirect()->route('makanan.index')->with('success', 'Makanan updated successfully');
+    } catch (\Exception $e) {
+        dd($e->getMessage());
+
+        Log::error('Error updating makanan: ' . $e->getMessage());
+
+        return redirect()->route('makanan.index')->with('error', 'Failed to update makanan');
     }
+}
+
 
     // Menghapus makanan berdasarkan ID
     public function destroy($id)
     {
-        $makanan = Makanan::findOrFail($id);
-        $makanan->delete();
-
-        // Redirect dengan pesan sukses
-        return redirect()->route('makanan.index')->with('success', 'Makanan berhasil dihapus!');
+        try {
+            $makanan = Makanan::findOrFail($id);
+            $makanan->delete();
+    
+            return redirect()->route('makanan.index')->with('success', 'Makanan deleted successfully');
+        } catch (\Exception $e) {
+            Log::error('Error deleting makanan: ' . $e->getMessage());
+    
+            return redirect()->route('makanan.index')->with('error', 'Failed to delete makanan');
+        }
     }
+    
 }
