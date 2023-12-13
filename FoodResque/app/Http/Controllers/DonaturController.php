@@ -60,7 +60,7 @@ class DonaturController extends Controller
 
     public function exportPdf()
     {
-        $donaturData = Donatur::all(); // Replace with your actual query
+        $donaturData = Donatur::all(); 
 
         $mpdf = new Mpdf();
         $mpdf->WriteHTML(view('donatur.pdf', ['donaturData' => $donaturData])->render());
